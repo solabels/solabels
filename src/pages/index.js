@@ -1,13 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
 
-import Layout from "../components/Layout"
-import Image from "../components/Image"
-import SEO from "../components/Seo"
+import Layout from "../components/layout"
+import Image from "../components/image"
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
     <h1 css={{ fontFamily: "Roboto" }}>Hi people</h1>
     <p>Welcome to your new Gatsby site.</p>
     <p>Now go build something great.</p>
