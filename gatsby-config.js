@@ -13,6 +13,16 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-prismic-graphql`,
+      options: {
+        repositoryName: "solarlabel",
+        accessToken:
+          "MC5YVHE0ZXhFQUFDQUF5Y2Fn.Re-_ve-_ve-_vSA8Te-_ve-_vQ4lIu-_ve-_ve-_vTbvv70lbCZOJzgmfR5177-9XgshOg",
+        path: "/", // (optional, default: /preview)
+        previews: true, // (optional, default: false)
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -25,16 +35,6 @@ module.exports = {
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
-      },
-    },
-    {
-      resolve: `gatsby-source-prismic-graphql`,
-      options: {
-        repositoryName: "solarlabel",
-        accessToken:
-          "MC5YVHE0ZXhFQUFDQUF5Y2Fn.Re-_ve-_ve-_vSA8Te-_ve-_vQ4lIu-_ve-_ve-_vTbvv70lbCZOJzgmfR5177-9XgshOg",
-        path: "/", // (optional, default: /preview)
-        previews: true, // (optional, default: false)
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
