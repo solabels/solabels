@@ -3,7 +3,7 @@
   "private": true,
   "description": "A simple starter to get up and developing quickly with Gatsby",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Yordan Lasonov <yordan.lasonov@gmail.com>",
   "dependencies": {
     "@emotion/core": "^10.0.14",
     "@emotion/styled": "^10.0.14",
@@ -15,7 +15,9 @@
     "gatsby-plugin-react-helmet": "^3.1.2",
     "gatsby-plugin-sharp": "^2.2.8",
     "gatsby-source-filesystem": "^2.1.5",
-    "gatsby-source-prismic-graphql": "^3.3.1",
+    "gatsby-source-graphql-universal": "^3.0.5",
+    "gatsby-source-prismic": "^2.2.0",
+    "gatsby-source-prismic-graphql": "^3.2.0",
     "gatsby-transformer-sharp": "^2.2.4",
     "isomorphic-fetch": "^2.2.1",
     "prismic-javascript": "^2.1.1",
@@ -44,7 +46,6 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "now-build": "npm run build",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
