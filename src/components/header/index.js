@@ -2,7 +2,7 @@ import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
 
-import Skew from "../Skew"
+import Skew from "../skew"
 
 const Header = ({ siteTitle }) => (
   <Skew
