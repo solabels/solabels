@@ -28,7 +28,7 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-prismic-graphql`,
+      resolve: 'gatsby-source-prismic-graphql',
       options: {
         repositoryName: 'solarlabel',
         accessToken: 'MC5YVHE0ZXhFQUFDQUF5Y2Fn.Re-_ve-_ve-_vSA8Te-_ve-_vQ4lIu-_ve-_ve-_vTbvv70lbCZOJzgmfR5177-9XgshOg',
