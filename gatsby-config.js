@@ -13,18 +13,6 @@ module.exports = {
         path: `${ __dirname }/src/images`,
       },
     },
-<<<<<<< Updated upstream
-=======
-    {
-      resolve: `gatsby-source-prismic-graphql`,
-      options: {
-        repositoryName: 'solarlabel',
-        accessToken: 'MC5YVHE0ZXhFQUFDQUF5Y2Fn.Re-_ve-_ve-_vSA8Te-_ve-_vQ4lIu-_ve-_ve-_vTbvv70lbCZOJzgmfR5177-9XgshOg',
-        path: '/', // (optional, default: /preview)
-        previews: true, // (optional, default: false)
-      },
-    },
->>>>>>> Stashed changes
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -42,10 +30,9 @@ module.exports = {
     {
       resolve: `gatsby-source-prismic-graphql`,
       options: {
-        repositoryName: "solarlabel",
-        accessToken:
-          "MC5YVFhFRFJBQUFDSUFOTlA4.Qnbvv70IdO-_vQ09En1k77-9PXLvv70xa--_ve-_ve-_vVDvv71H77-9MAl177-977-9eE3vv70",
-        path: "/", // (optional, default: /preview)
+        repositoryName: 'solarlabel',
+        accessToken: 'MC5YVHE0ZXhFQUFDQUF5Y2Fn.Re-_ve-_ve-_vSA8Te-_ve-_vQ4lIu-_ve-_ve-_vTbvv70lbCZOJzgmfR5177-9XgshOg',
+        path: '/', // (optional, default: /preview)
         previews: true, // (optional, default: false)
       },
     },
