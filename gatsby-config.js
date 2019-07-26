@@ -10,9 +10,21 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/src/images`,
+        path: `${ __dirname }/src/images`,
       },
     },
+<<<<<<< Updated upstream
+=======
+    {
+      resolve: `gatsby-source-prismic-graphql`,
+      options: {
+        repositoryName: 'solarlabel',
+        accessToken: 'MC5YVHE0ZXhFQUFDQUF5Y2Fn.Re-_ve-_ve-_vSA8Te-_ve-_vQ4lIu-_ve-_ve-_vTbvv70lbCZOJzgmfR5177-9XgshOg',
+        path: '/', // (optional, default: /preview)
+        previews: true, // (optional, default: false)
+      },
+    },
+>>>>>>> Stashed changes
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -41,4 +53,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};
