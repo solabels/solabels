@@ -1,13 +1,13 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
+import React from 'react';
 
-import Skew from "../skew"
+import Skew from '../skew';
 
 const Header = ({ siteTitle }) => (
-  <Skew
+  <div
     style={{
-      background: `rebeccapurple`,
+      background: `var(--color-2)`,
       marginBottom: `1.45rem`,
     }}
   >
@@ -30,15 +30,15 @@ const Header = ({ siteTitle }) => (
         </Link>
       </h1>
     </div>
-  </Skew>
-)
+  </div>
+);
 
 Header.propTypes = {
   siteTitle: PropTypes.string,
-}
+};
 
 Header.defaultProps = {
   siteTitle: ``,
-}
+};
 
-export default Header
+export default Header;

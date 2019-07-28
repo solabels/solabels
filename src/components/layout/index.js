@@ -21,10 +21,14 @@ const renderLayout = data => {
       <Global
         styles={css`
           :root {
-            --main-bg-color: ${ layoutProps.color1 };
+            --color-1: ${ layoutProps.color1 };
+            --color-2: ${ layoutProps.color2 };
+            --color-3: ${ layoutProps.color3 };
+            --color-4: ${ layoutProps.color4 };
+            --color-5: ${ layoutProps.color5 };
           }
-          * {
-            color: var(--main-bg-color);
+          body {
+            background-color: var(--color-5);
           }
         `}
       />
@@ -36,7 +40,7 @@ export const Layout = ({ children }) => {
   return (
     <>
       <StaticQuery query={query} render={withPreview(renderLayout, query)} />
-      <Header />
+      {/* <Header /> */}
       <main>{children}</main>
       <footer>
         © {new Date().getFullYear()}, Built with
