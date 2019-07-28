@@ -62,7 +62,8 @@ const ScrollDown = styled.div`
   span {
     display: block;
     font-weight: bold;
-    font-size: 1.2rem;
+    letter-spacing: 0.2rem;
+    font-size: 1rem;
     padding-bottom: 0.1rem;
   }
   .icon {

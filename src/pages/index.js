@@ -3,6 +3,8 @@ import { Link, graphql, StaticQuery } from 'gatsby';
 import { Container, Row, Col } from 'reactstrap';
 import { uid } from 'react-uid';
 import { withPreview } from 'gatsby-source-prismic-graphql';
+import 'bootstrap/dist/css/bootstrap-reboot.min.css';
+import 'bootstrap/dist/css/bootstrap-grid.min.css';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
@@ -12,13 +14,11 @@ const RenderCMS = ({ prismic }) => {
   return (
     <div>
       {prismic.allHomepages.edges[0].node.body.map(row => (
-        <Container key={uid(row)}>
-          <Row>
-            <Col md="12">
-              <CmsRow type={row.type} data={row} />
-            </Col>
-          </Row>
-        </Container>
+        <Row key={uid(row)}>
+          <Col md="12">
+            <CmsRow type={row.type} data={row} />
+          </Col>
+        </Row>
       ))}
     </div>
   );
