@@ -1,12 +1,24 @@
-import styled from "@emotion/styled"
+import React, { useState, useEffect, Children } from 'react';
+import styled from '@emotion/styled';
 
-const Skew = styled.section`
+const SkewWrapper = styled.section`
+  position: relative;
   transform: skew(0deg, -4deg);
   margin-top: -4%;
   padding-top: 4%;
-  > div {
-    transform: skew(0deg, 4deg);
-  }
-`
+  background-color: ${ props => props.backgroundColor };
+`;
 
-export default Skew
+const SkewedDiv = styled.div`
+  transform: skew(0deg, 4deg);
+`;
+
+const Skew = ({ children, backgroundColor = 'transperant' }) => {
+  return (
+    <SkewWrapper backgroundColor={backgroundColor}>
+      <SkewedDiv>{children}</SkewedDiv>
+    </SkewWrapper>
+  );
+};
+
+export default Skew;

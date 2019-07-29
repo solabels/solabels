@@ -48,6 +48,11 @@ const query = graphql`
               }
               ... on PRISMIC_HomepageBody3_slots {
                 type
+                fields {
+                  number
+                  text
+                  title
+                }
               }
               ... on PRISMIC_HomepageBodyContact {
                 type

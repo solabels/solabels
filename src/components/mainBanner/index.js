@@ -10,6 +10,7 @@ const Banner = styled.div`
   background-repeat: no-repeat;
   background-color: var(--color-1);
   overflow: hidden;
+  z-index: 2;
   video {
     position: absolute;
     top: 0;
@@ -78,7 +79,7 @@ const MainBanner = ({ data }) => {
     <Banner style={{ height: '45vw' }}>
       <TopGradient />
       <Text>{RichText.render(primary.text)}</Text>
-      <video autoplay="autoplay" muted loop>
+      <video autoPlay="autoplay" muted loop>
         <source src="https://www.findusnow.com/img/video/solarpower.mp4" type="video/mp4" />
       </video>
       <ScrollDown>
