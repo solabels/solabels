@@ -19,9 +19,13 @@ const Slot = styled.div`
   color: white;
   text-align: center;
   span {
-    font-family: "Ubuntu", sans-serif;
+    font-family: 'Titillium Web', sans-serif;
     font-weight: 500;
-    font-size: 4.5rem;
+    font-size: 5rem;
+  }
+  p {
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 2rem;
   }
 `;
 
@@ -57,7 +61,7 @@ const ThreeSlots = ({ data }) => {
                 <Col sm="4" key={uid(item)}>
                   <Slot>
                     <span>{isShown && <CountUp end={item.number} duration={4} />}</span>
-                    <div>{item.title[0].text}</div>
+                    <p>{item.title[0].text}</p>
                   </Slot>
                 </Col>
               );

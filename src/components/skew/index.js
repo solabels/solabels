@@ -7,6 +7,7 @@ const SkewWrapper = styled.section`
   margin-top: -4%;
   padding-top: 4%;
   background-color: ${ props => props.backgroundColor };
+  box-shadow: 0px 10px 0.5rem -0.4rem rgba(0, 0, 0, 0.2);
 `;
 
 const SkewedDiv = styled.div`

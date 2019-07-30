@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, graphql, StaticQuery } from 'gatsby';
-import { Container, Row, Col } from 'reactstrap';
+import { Row, Col } from 'reactstrap';
 import { uid } from 'react-uid';
 import { withPreview } from 'gatsby-source-prismic-graphql';
 import 'bootstrap/dist/css/bootstrap-reboot.min.css';
@@ -28,7 +28,6 @@ const IndexPage = () => (
   <Layout>
     <SEO title="Homepage" />
     <StaticQuery query={query} render={withPreview(RenderCMS, query)} />
-    <Link to="/page-2/">Go to page 2</Link>
   </Layout>
 );
 

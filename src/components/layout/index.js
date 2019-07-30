@@ -11,7 +11,7 @@ import { StaticQuery, graphql } from 'gatsby';
 import { Global, css } from '@emotion/core';
 import { withPreview } from 'gatsby-source-prismic-graphql';
 
-import Header from '../header';
+import Nav from '../Nav';
 import './layout.css';
 
 const renderLayout = data => {
@@ -28,7 +28,14 @@ const renderLayout = data => {
             --color-5: ${ layoutProps.color5 };
           }
           body {
+            overflow-x: hidden;
+            background-image: url(${ layoutProps.background_image.url });
+            background-position: right bottom;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: contain;
             background-color: var(--color-5);
+            height: 300rem;
           }
         `}
       />
@@ -41,6 +48,7 @@ export const Layout = ({ children }) => {
     <>
       <StaticQuery query={query} render={withPreview(renderLayout, query)} />
       {/* <Header /> */}
+      <Nav />
       <main>{children}</main>
       <footer>
         © {new Date().getFullYear()}, Built with
@@ -62,6 +70,7 @@ const query = graphql`
             color3
             color4
             color5
+            background_image
           }
         }
       }
@@ -70,7 +79,7 @@ const query = graphql`
 `;
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired
 };
 
 export default Layout;
