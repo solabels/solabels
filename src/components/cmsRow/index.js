@@ -2,6 +2,7 @@ import React from 'react';
 import MainBanner from '../mainBanner';
 import ThreeSlots from '../threeSlots';
 import ErrorBoundary from '../errorBoundary';
+import HeadlineText from '../headlineText';
 
 const CmsComponent = ({ type, data }) => {
   switch (type) {
@@ -9,6 +10,8 @@ const CmsComponent = ({ type, data }) => {
     return <MainBanner data={data} />;
   case '3_slots':
     return <ThreeSlots data={data} />;
+  case 'headline___text':
+    return <HeadlineText data={data} />;
   default:
     return null;
   }

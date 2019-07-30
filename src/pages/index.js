@@ -54,6 +54,13 @@ const query = graphql`
                   title
                 }
               }
+              ... on PRISMIC_HomepageBodyHeadline___text {
+                type
+                primary {
+                  title
+                  text
+                }
+              }
               ... on PRISMIC_HomepageBodyContact {
                 type
               }
