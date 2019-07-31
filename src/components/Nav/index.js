@@ -3,13 +3,15 @@ import styled from '@emotion/styled';
 import { StickyContainer, Sticky } from 'react-sticky';
 
 const Nav = styled.nav`
-  position: absolute;
+  position: fixed;
   display: flex;
   align-items: center;
   z-index: 1000;
   width: 100%;
   padding: 2rem 6rem;
+  font-family: 'Titillium Web', sans-serif;
   ul {
+    font-size: 2rem;
     position: relative;
     display: inline-block;
     list-style-type: none;
@@ -17,7 +19,6 @@ const Nav = styled.nav`
     width: 100%;
     margin: 0;
     li {
-      font-size: 1.5rem;
       padding-left: 1.5rem;
       padding-right: 1.5rem;
       display: inline-block;
@@ -38,7 +39,7 @@ const Logo = styled.div`
 `;
 
 const ContactButton = styled.div`
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   height: 100%;
   float: right;
   padding: 1.5rem;

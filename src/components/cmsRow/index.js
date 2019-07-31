@@ -3,6 +3,7 @@ import MainBanner from '../mainBanner';
 import ThreeSlots from '../threeSlots';
 import ErrorBoundary from '../errorBoundary';
 import HeadlineText from '../headlineText';
+import FormContact from '../contactForm';
 
 const CmsComponent = ({ type, data }) => {
   switch (type) {
@@ -12,6 +13,8 @@ const CmsComponent = ({ type, data }) => {
     return <ThreeSlots data={data} />;
   case 'headline___text':
     return <HeadlineText data={data} />;
+  case 'contact':
+    return <FormContact data={data} />;
   default:
     return null;
   }

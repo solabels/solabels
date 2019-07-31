@@ -5,13 +5,13 @@ import { RichText } from 'prismic-reactjs';
 const HeadlineTextWrapper = styled.div`
   background-color: var(--color-1);
   color: white;
-  padding-top: 7.5rem;
-  padding-bottom: 7.5rem;
+  padding-top: 9rem;
+  padding-bottom: 9rem;
   text-align: center;
 `;
 
 const Title = styled.div`
-  font-size: 45px;
+  font-size: 4.5rem;
   font-family: 'Titillium Web', sans-serif;
 
   strong {
