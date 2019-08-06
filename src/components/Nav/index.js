@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { StickyContainer, Sticky } from 'react-sticky';
 
@@ -8,8 +8,10 @@ const Nav = styled.nav`
   align-items: center;
   z-index: 1000;
   width: 100%;
-  padding: 2rem 6rem;
+  padding: 1rem 6rem;
   font-family: 'Titillium Web', sans-serif;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.3s;
   ul {
     font-size: 2rem;
     position: relative;
@@ -26,6 +28,9 @@ const Nav = styled.nav`
       margin-bottom: 0;
       cursor: pointer;
     }
+  }
+  &.active-scroll {
+    background-color: rgba(0, 0, 0, 0.7);
   }
 `;
 
@@ -50,8 +55,23 @@ const ContactButton = styled.div`
 `;
 
 const NavMenu = () => {
+  const [activeClass, setActiveClass] = useState('');
+  useEffect(() => {
+    window.addEventListener('scroll', addClassOnScroll);
+    return () => {
+      window.removeEventListener('scroll', addClassOnScroll);
+    };
+  });
+
+  const addClassOnScroll = () => {
+    if (window.scrollY > 200) {
+      setActiveClass('active-scroll');
+    } else {
+      setActiveClass('');
+    }
+  };
   return (
-    <Nav>
+    <Nav className={activeClass}>
       <Logo>
         <img height="30" src="http://lanman2018.ieee-lanman.org/files/2016/01/sample-logo@2x.png" />
       </Logo>

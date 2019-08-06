@@ -60,6 +60,7 @@ const ScrollDown = styled.div`
   left: 50%;
   text-align: center;
   transform: translateX(-50%);
+  cursor: pointer;
   span {
     display: block;
     font-weight: bold;
@@ -70,10 +71,23 @@ const ScrollDown = styled.div`
   .icon {
     opacity: 0.5;
   }
+  &:hover {
+    .icon {
+      opacity: 0.8;
+    }
+  }
 `;
 
 const MainBanner = ({ data }) => {
   const { primary } = data;
+  const scrollDown = () => {
+    const scrollTo = document.querySelector('.scroll-to');
+
+    scrollTo.scrollIntoView({
+      behavior: 'smooth',
+      block: 'nearest'
+    });
+  };
   return (
     // <Banner style={{ backgroundImage: `url(${ primary.image.url })`, height: primary.image.dimensions.height }}>
     <Banner style={{ height: '45vw' }}>
@@ -82,7 +96,7 @@ const MainBanner = ({ data }) => {
       <video autoPlay="autoplay" muted loop>
         <source src="https://www.findusnow.com/img/video/solarpower.mp4" type="video/mp4" />
       </video>
-      <ScrollDown>
+      <ScrollDown onClick={scrollDown}>
         <span>SCROLL DOWN</span>
         <FaAngleDown className="icon" size="3.5rem" color="white" />
       </ScrollDown>
