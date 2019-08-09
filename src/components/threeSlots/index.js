@@ -11,6 +11,9 @@ import Skew from '../skew';
 const ThreeSlotsWrapper = styled.div`
   padding-top: 15rem;
   padding-bottom: 15rem;
+  @media ${ props => props.theme.media.md } {
+    padding-top: 0rem;
+  }
 `;
 
 const Slot = styled.div`

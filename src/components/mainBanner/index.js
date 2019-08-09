@@ -50,6 +50,12 @@ const Text = styled.div`
   align-items: center;
   color: white;
   justify-content: center;
+  text-align: center;
+  @media ${ props => props.theme.media.md } {
+    h1 {
+      font-size: 4rem;
+    }
+  }
 `;
 
 const ScrollDown = styled.div`
@@ -76,6 +82,9 @@ const ScrollDown = styled.div`
       opacity: 0.8;
     }
   }
+  @media ${ props => props.theme.media.md } {
+    display: none;
+  }
 `;
 
 const MainBanner = ({ data }) => {
@@ -92,7 +101,9 @@ const MainBanner = ({ data }) => {
     // <Banner style={{ backgroundImage: `url(${ primary.image.url })`, height: primary.image.dimensions.height }}>
     <Banner style={{ height: '45vw' }}>
       <TopGradient />
-      <Text>{RichText.render(primary.text)}</Text>
+      <Text>
+        <h1>{primary.text[0].text}</h1>
+      </Text>
       <video autoPlay="autoplay" muted loop>
         <source src="https://www.findusnow.com/img/video/solarpower.mp4" type="video/mp4" />
       </video>

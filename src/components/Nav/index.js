@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
-import { StickyContainer, Sticky } from 'react-sticky';
 
 const Nav = styled.nav`
   position: fixed;
@@ -32,6 +31,11 @@ const Nav = styled.nav`
   &.active-scroll {
     background-color: rgba(0, 0, 0, 0.7);
   }
+  @media ${ props => props.theme.media.md } {
+    ul {
+      display: none;
+    }
+  }
 `;
 
 const Logo = styled.div`
@@ -52,6 +56,9 @@ const ContactButton = styled.div`
   background-color: var(--color-1);
   border: 0.2rem solid var(--color-1);
   cursor: pointer;
+  @media ${ props => props.theme.media.md } {
+    display: none;
+  }
 `;
 
 const NavMenu = () => {

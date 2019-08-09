@@ -10,9 +10,21 @@ import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import { Global, css } from '@emotion/core';
 import { withPreview } from 'gatsby-source-prismic-graphql';
+import { ThemeProvider } from 'emotion-theming';
 
-import Nav from '../Nav';
+import Nav from '../nav';
 import './layout.css';
+
+const theme = {
+  zIndex: {},
+  media: {
+    xl: 'screen and (max-width: 1199px)',
+    lg: 'screen and (max-width: 991px)',
+    md: 'screen and (max-width: 767px)',
+    sm: 'screen and (max-width: 575px)',
+    xs: 'screen and (max-width: 0px)'
+  }
+};
 
 const renderLayout = data => {
   const layoutProps = data.prismic.allLayouts.edges[0].node;
@@ -45,9 +57,8 @@ const renderLayout = data => {
 
 export const Layout = ({ children }) => {
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <StaticQuery query={query} render={withPreview(renderLayout, query)} />
-      {/* <Header /> */}
       <Nav />
       <main>{children}</main>
       <footer>
@@ -55,7 +66,7 @@ export const Layout = ({ children }) => {
         {` `}
         <a href="https://www.gatsbyjs.org">Gatsby</a>
       </footer>
-    </>
+    </ThemeProvider>
   );
 };
 

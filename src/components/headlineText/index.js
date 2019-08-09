@@ -13,9 +13,11 @@ const HeadlineTextWrapper = styled.div`
 const Title = styled.div`
   font-size: 4.5rem;
   font-family: 'Titillium Web', sans-serif;
-
   strong {
     font-weight: 700;
+  }
+  @media ${ props => props.theme.media.md } {
+    font-size: 3.5rem;
   }
 `;
 
@@ -24,6 +26,10 @@ const Text = styled.div`
   max-width: 850px;
   font-weight: 400;
   margin: 2rem auto 0;
+  @media ${ props => props.theme.media.md } {
+    padding: 1rem;
+    font-size: 2rem;
+  }
 `;
 
 const HeadlineText = ({ data }) => {
