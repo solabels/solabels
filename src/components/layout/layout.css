@@ -10,6 +10,18 @@
   font-style: normal;
 }
 
+@keyframes delayedDisplay {
+  0% {
+    display: none;
+  }
+  50% {
+   display: none;
+  }
+  100% {
+    display: block;
+  }
+}
+
 
 html {
   font-family: sans-serif;
