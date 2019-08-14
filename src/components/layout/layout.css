@@ -130,8 +130,27 @@ optgroup {
   font-weight: 700;
 }
 button,
-input {
+input[type=text] {
   overflow: visible;
+}
+input[type=text],
+input[type=email],
+textarea {
+  width: 100%;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 3px #ddd;
+  box-sizing: border-box;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem; 
+}
+
+textarea{
+  resize: none!important;
+  height: 20rem;
 }
 button,
 select {
