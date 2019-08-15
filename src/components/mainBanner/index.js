@@ -51,6 +51,7 @@ const Text = styled.div`
   color: white;
   justify-content: center;
   text-align: center;
+  opacity: 0.95;
   @media ${ props => props.theme.media.md } {
     h1 {
       font-size: 4rem;

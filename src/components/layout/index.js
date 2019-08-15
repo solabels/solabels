@@ -12,8 +12,10 @@ import { Global, css } from '@emotion/core';
 import { withPreview } from 'gatsby-source-prismic-graphql';
 import { ThemeProvider } from 'emotion-theming';
 
-import Nav from '../nav';
 import './layout.css';
+import Nav from '../Nav';
+import FooterContact from '../footerContact';
+import Footer from '../footer';
 
 const theme = {
   zIndex: {},
@@ -47,7 +49,6 @@ const renderLayout = data => {
             background-attachment: fixed;
             background-size: contain;
             background-color: var(--color-5);
-            height: 300rem;
           }
         `}
       />
@@ -61,11 +62,9 @@ export const Layout = ({ children }) => {
       <StaticQuery query={query} render={withPreview(renderLayout, query)} />
       <Nav />
       <main>{children}</main>
-      <footer>
-        © {new Date().getFullYear()}, Built with
-        {` `}
-        <a href="https://www.gatsbyjs.org">Gatsby</a>
-      </footer>
+      <div style={{ marginTop: '15rem' }}></div>
+      <FooterContact />
+      <Footer />
     </ThemeProvider>
   );
 };

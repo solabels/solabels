@@ -25,10 +25,12 @@ const Slot = styled.div`
     font-family: 'Titillium Web', sans-serif;
     font-weight: 500;
     font-size: 5rem;
+    opacity: 0.95;
   }
   p {
     font-family: 'Titillium Web', sans-serif;
     font-size: 2rem;
+    opacity: 0.9;
   }
 `;
 

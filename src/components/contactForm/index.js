@@ -6,14 +6,14 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 const ContactFormStyled = styled.div`
   /* display: flex; */
   background-color: var(--color-1);
-  padding: 2rem 4.5rem;
-  margin: 20rem auto;
+  padding: 2rem 4.5rem 4rem;
+  margin: 20rem auto 10rem;
   box-shadow: 0.1rem 1rem 0.5rem -0.4rem rgba(0, 0, 0, 0.2);
   max-width: 60rem;
   font-family: 'Titillium Web', sans-serif;
   color: white;
   transition: 0.5s max-width;
-  transition-delay: 0.25s;
+  transition-delay: 0.2s;
   .form-style {
     transition: 0.5s;
     width: 100%;
@@ -34,7 +34,7 @@ const ContactFormStyled = styled.div`
       padding: 1rem 1.5rem;
     }
   }
-  &:hover {
+  /* &:hover {
     max-width: 100rem;
     .form-style {
       width: 60%;
@@ -58,25 +58,28 @@ const ContactFormStyled = styled.div`
         white-space: nowrap;
       }
     }
-  }
+  } */
 `;
 
 const Title = styled.h3`
   font-weight: 500;
   font-size: 3rem;
   text-align: center;
+  opacity: 0.9;
 `;
 
 const Label = styled.label`
   display: inline-block;
   width: 49%;
   font-size: 1.6rem;
+  opacity: 0.9;
 `;
 
 const ErrorMessageSpan = styled.span`
   display: inline-block;
   width: 50%;
   text-align: right;
+  opacity: 0.9;
 `;
 
 const Button = styled.button`
@@ -159,7 +162,7 @@ const ContactForm = () => {
             )}
           </Formik>
         </div>
-        <div className="contact-style">
+        {/* <div className="contact-style">
           <div className="contact-style--content">
             <h4 style={{ fontSize: '2.2rem' }}>Solabels</h4>
             <p>
@@ -172,7 +175,7 @@ const ContactForm = () => {
               <br /> Washington, DC 20500, USA
             </p>
           </div>
-        </div>
+        </div> */}
       </div>
     </ContactFormStyled>
   );

@@ -13,6 +13,7 @@ const HeadlineTextWrapper = styled.div`
 const Title = styled.div`
   font-size: 4.5rem;
   font-family: 'Titillium Web', sans-serif;
+  opacity: 0.9;
   strong {
     font-weight: 700;
   }
@@ -26,6 +27,7 @@ const Text = styled.div`
   max-width: 850px;
   font-weight: 400;
   margin: 2rem auto 0;
+  opacity: 0.9;
   @media ${ props => props.theme.media.md } {
     padding: 1rem;
     font-size: 2rem;

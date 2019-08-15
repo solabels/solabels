@@ -19,6 +19,7 @@ const Nav = styled.nav`
     height: 100%;
     width: 100%;
     margin: 0;
+    opacity: 0.95;
     li {
       padding-left: 1.5rem;
       padding-right: 1.5rem;
