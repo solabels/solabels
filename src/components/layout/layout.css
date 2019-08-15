@@ -22,6 +22,11 @@
   }
 }
 
+.img-responsive{
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
 html {
   font-family: sans-serif;

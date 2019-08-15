@@ -33,16 +33,19 @@ const Contact = styled.div`
 `;
 
 const FooterContactCMS = ({ prismic }) => {
-  console.log(prismic);
   const contactInfo = prismic.allContactss.edges[0].node;
-  console.log(contactInfo);
   return (
     <>
       <div style={{ position: 'relative', zIndex: 1 }}>
         <Skew backgroundColor="var(--color-1)" style={{ position: 'absolute', width: '100%', top: '0', height: '15rem' }} />
       </div>
-      <div style={{ position: 'relative', backgroundColor: 'var(--color-1)', padding: '10rem', zIndex: 2 }}>
+      <div style={{ position: 'relative', backgroundColor: 'var(--color-1)', padding: '5rem 0 10rem', zIndex: 2 }}>
+        <h2 style={{ fontSize: '4.5rem', color: 'white', textAlign: 'center', marginBottom: '3.5rem' }}>solabels</h2>
         <CenteredContent>
+          <Contact>
+            <div className="first-line">Working Hours:</div>
+            <div className="second-line">24/7</div>
+          </Contact>
           <Contact>
             <div className="first-line">Phone:</div>
             <div className="second-line">{contactInfo.phone[0].text}</div>

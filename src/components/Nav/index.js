@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'gatsby';
 import styled from '@emotion/styled';
 
 const Nav = styled.nav`
   position: fixed;
   display: flex;
+  top: 0%;
   align-items: center;
   z-index: 1000;
   width: 100%;
   padding: 1rem 6rem;
   font-family: 'Titillium Web', sans-serif;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: ${ props => (props.navDarken ? 'rgba(0, 0, 0, 0.7)' : 'rgba(0, 0, 0, 0)') };
   transition: background-color 0.3s;
   ul {
     font-size: 2rem;
@@ -27,6 +29,14 @@ const Nav = styled.nav`
       color: #fff;
       margin-bottom: 0;
       cursor: pointer;
+      a {
+        text-decoration: none;
+        color: white;
+        transition: 0.2s opacity;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
     }
   }
   &.active-scroll {
@@ -42,6 +52,9 @@ const Nav = styled.nav`
 const Logo = styled.div`
   display: flex;
   margin-right: 5rem;
+  font-size: 2rem;
+  color: white;
+  font-weight: 800;
   img {
     width: auto;
     margin-bottom: 0;
@@ -62,7 +75,7 @@ const ContactButton = styled.div`
   }
 `;
 
-const NavMenu = () => {
+const NavMenu = ({ navDarken }) => {
   const [activeClass, setActiveClass] = useState('');
   useEffect(() => {
     window.addEventListener('scroll', addClassOnScroll);
@@ -79,22 +92,20 @@ const NavMenu = () => {
     }
   };
   return (
-    <Nav className={activeClass}>
-      <Logo>
-        <img height="30" src="http://lanman2018.ieee-lanman.org/files/2016/01/sample-logo@2x.png" />
-      </Logo>
+    <Nav className={activeClass} navDarken={navDarken}>
+      <Logo>solabels</Logo>
       <ul>
         <li>
-          <a to="/">Home</a>
+          <Link to="/">Home</Link>
         </li>
         <li>
-          <a to="/">Services</a>
+          <Link to="/">Services</Link>
         </li>
         <li>
-          <a to="/">Labels</a>
+          <Link to="/projects">Projects</Link>
         </li>
         <li>
-          <a to="/">Blog</a>
+          <Link to="/about">About</Link>
         </li>
       </ul>
       <ContactButton>Contact</ContactButton>

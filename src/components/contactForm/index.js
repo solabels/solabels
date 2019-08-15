@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
 const ContactFormStyled = styled.div`
-  /* display: flex; */
+  display: flex;
   background-color: var(--color-1);
   padding: 2rem 4.5rem 4rem;
   margin: 20rem auto 10rem;
@@ -17,6 +17,12 @@ const ContactFormStyled = styled.div`
   .form-style {
     transition: 0.5s;
     width: 100%;
+    form {
+      width: 50rem;
+      @media ${ props => props.theme.media.md } {
+        width: 100%;
+      }
+    }
   }
   .contact-style {
     transition: 0.5s;
@@ -34,7 +40,7 @@ const ContactFormStyled = styled.div`
       padding: 1rem 1.5rem;
     }
   }
-  /* &:hover {
+  &:hover {
     max-width: 100rem;
     .form-style {
       width: 60%;
@@ -58,7 +64,7 @@ const ContactFormStyled = styled.div`
         white-space: nowrap;
       }
     }
-  } */
+  }
 `;
 
 const Title = styled.h3`
@@ -162,9 +168,9 @@ const ContactForm = () => {
             )}
           </Formik>
         </div>
-        {/* <div className="contact-style">
+        <div className="contact-style">
           <div className="contact-style--content">
-            <h4 style={{ fontSize: '2.2rem' }}>Solabels</h4>
+            <h4 style={{ fontSize: '2.2rem' }}>solabels</h4>
             <p>
               Phones: 321-506-4704
               <br />
@@ -175,7 +181,7 @@ const ContactForm = () => {
               <br /> Washington, DC 20500, USA
             </p>
           </div>
-        </div> */}
+        </div>
       </div>
     </ContactFormStyled>
   );

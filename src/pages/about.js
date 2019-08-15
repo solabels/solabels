@@ -1,31 +1,27 @@
 import React from 'react';
-import { graphql, StaticQuery } from 'gatsby';
-import { Row, Col } from 'reactstrap';
+import { Link, graphql, StaticQuery } from 'gatsby';
 import { uid } from 'react-uid';
 import { withPreview } from 'gatsby-source-prismic-graphql';
 import 'bootstrap/dist/css/bootstrap-reboot.min.css';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
+import Skew from '../components/Skew';
 
+import Project from '../components/project';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
-import CmsRow from '../components/cmsRow';
 
 const RenderCMS = ({ prismic }) => {
   return (
-    <div>
-      {prismic.allHomepages.edges[0].node.body.map(row => (
-        <Row key={uid(row)}>
-          <Col md="12">
-            <CmsRow type={row.type} data={row} />
-          </Col>
-        </Row>
-      ))}
+    <div style={{ margin: '12.5rem 0 30rem' }}>
+      <h1 style={{ margin: '5rem 0', textAlign: 'center', fontWeight: '800' }}>Projects</h1>
+      <Project />
+      <Project />
     </div>
   );
 };
 
 const IndexPage = () => (
-  <Layout>
+  <Layout navDarken={true}>
     <SEO title="Homepage" />
     <StaticQuery query={query} render={withPreview(RenderCMS, query)} />
   </Layout>

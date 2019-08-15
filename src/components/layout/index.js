@@ -56,11 +56,11 @@ const renderLayout = data => {
   );
 };
 
-export const Layout = ({ children }) => {
+export const Layout = ({ children, navDarken }) => {
   return (
     <ThemeProvider theme={theme}>
       <StaticQuery query={query} render={withPreview(renderLayout, query)} />
-      <Nav />
+      <Nav navDarken={navDarken} />
       <main>{children}</main>
       <div style={{ marginTop: '15rem' }}></div>
       <FooterContact />
