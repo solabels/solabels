@@ -1,28 +1,25 @@
 import React from 'react';
-import { Link, graphql, StaticQuery } from 'gatsby';
-import { uid } from 'react-uid';
+import { graphql, StaticQuery } from 'gatsby';
 import { withPreview } from 'gatsby-source-prismic-graphql';
-import 'bootstrap/dist/css/bootstrap-reboot.min.css';
-import 'bootstrap/dist/css/bootstrap-grid.min.css';
-import Skew from '../components/Skew';
 
-import Project from '../components/project';
+import AboutContent from '../components/paragraph';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 const RenderCMS = ({ prismic }) => {
   return (
     <div style={{ margin: '12.5rem 0 30rem' }}>
-      <h1 style={{ margin: '5rem 0', textAlign: 'center', fontWeight: '800' }}>Projects</h1>
-      <Project />
-      <Project />
+      <h1 style={{ margin: '5rem 0', textAlign: 'center', fontWeight: '800' }}>About us</h1>
+      <div>
+        <AboutContent text={prismic.allAbouts.edges[0].node.text} />
+      </div>
     </div>
   );
 };
 
-const IndexPage = () => (
+const About = () => (
   <Layout navDarken={true}>
-    <SEO title="Homepage" />
+    <SEO title="About" />
     <StaticQuery query={query} render={withPreview(RenderCMS, query)} />
   </Layout>
 );
@@ -30,36 +27,10 @@ const IndexPage = () => (
 const query = graphql`
   query {
     prismic {
-      allHomepages {
+      allAbouts {
         edges {
           node {
-            body {
-              ... on PRISMIC_HomepageBodyMain_banner {
-                type
-                primary {
-                  image
-                  text
-                }
-              }
-              ... on PRISMIC_HomepageBody3_slots {
-                type
-                fields {
-                  number
-                  text
-                  title
-                }
-              }
-              ... on PRISMIC_HomepageBodyHeadline___text {
-                type
-                primary {
-                  title
-                  text
-                }
-              }
-              ... on PRISMIC_HomepageBodyContact {
-                type
-              }
-            }
+            text
           }
         }
       }
@@ -67,4 +38,4 @@ const query = graphql`
   }
 `;
 
-export default IndexPage;
+export default About;

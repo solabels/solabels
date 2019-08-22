@@ -99,7 +99,7 @@ const NavMenu = ({ navDarken }) => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/">Services</Link>
+          <Link to="/services">Services</Link>
         </li>
         <li>
           <Link to="/projects">Projects</Link>

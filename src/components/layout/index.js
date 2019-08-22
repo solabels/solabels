@@ -11,9 +11,11 @@ import { StaticQuery, graphql } from 'gatsby';
 import { Global, css } from '@emotion/core';
 import { withPreview } from 'gatsby-source-prismic-graphql';
 import { ThemeProvider } from 'emotion-theming';
+import 'bootstrap/dist/css/bootstrap-reboot.min.css';
+import 'bootstrap/dist/css/bootstrap-grid.min.css';
 
 import './layout.css';
-import Nav from '../Nav';
+import Nav from '../nav';
 import FooterContact from '../footerContact';
 import Footer from '../footer';
 

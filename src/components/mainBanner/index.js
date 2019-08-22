@@ -1,5 +1,4 @@
 import React from 'react';
-import { RichText } from 'prismic-reactjs';
 import styled from '@emotion/styled';
 import { FaAngleDown } from 'react-icons/fa';
 

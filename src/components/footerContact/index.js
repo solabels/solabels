@@ -23,6 +23,7 @@ const Contact = styled.div`
   opacity: 0.9;
   .first-line {
     font-size: 1.4rem;
+    opacity: 0.6;
     @media ${ props => props.theme.media.lg } {
       margin-top: 1.5rem;
     }

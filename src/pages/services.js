@@ -10,18 +10,7 @@ import SEO from '../components/seo';
 const RenderCMS = ({ prismic }) => {
   return (
     <div style={{ margin: '12.5rem 0 30rem' }}>
-      <h1 style={{ margin: '5rem 0', textAlign: 'center', fontWeight: '800' }}>Projects</h1>
-      {prismic.allProjectss.edges[0].node.body.map(project => {
-        return (
-          <Project
-            key={uid(project)}
-            img={project.primary.image.url}
-            name={project.primary.title[0].text}
-            location={project.primary.location[0].text}
-            text={project.primary.text}
-          />
-        );
-      })}
+      <h1 style={{ margin: '5rem 0', textAlign: 'center', fontWeight: '800' }}>Services</h1>
     </div>
   );
 };
@@ -36,17 +25,34 @@ const Projects = () => (
 const query = graphql`
   query {
     prismic {
-      allProjectss {
+      allHomepages {
         edges {
           node {
             body {
-              ... on PRISMIC_ProjectsBodyProject {
+              ... on PRISMIC_HomepageBodyMain_banner {
+                type
                 primary {
                   image
-                  title
-                  location
                   text
                 }
+              }
+              ... on PRISMIC_HomepageBody3_slots {
+                type
+                fields {
+                  number
+                  text
+                  title
+                }
+              }
+              ... on PRISMIC_HomepageBodyHeadline___text {
+                type
+                primary {
+                  title
+                  text
+                }
+              }
+              ... on PRISMIC_HomepageBodyContact {
+                type
               }
             }
           }

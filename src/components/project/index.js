@@ -1,6 +1,6 @@
 import React from 'react';
-import { Row, Col } from 'reactstrap';
 import styled from '@emotion/styled';
+import { RichText } from 'prismic-reactjs';
 
 const ProjectWrapper = styled.section`
   display: flex;
@@ -54,7 +54,7 @@ const Project = ({ img, name, location, text }) => {
             <strong>{name}</strong>
           </div>
           <div className="underline">{location}</div>
-          <div style={{ marginTop: '2rem' }}>{text}</div>
+          <div style={{ marginTop: '2rem' }}>{RichText.render(text)}</div>
         </ProjectInfo>
       </ProjectCell>
     </ProjectWrapper>

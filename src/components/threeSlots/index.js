@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import CountUp from 'react-countup';
 import styled from '@emotion/styled';
-import { RichText } from 'prismic-reactjs';
 import { Row, Col } from 'reactstrap';
 import Fade from 'react-reveal/Fade';
 import { uid } from 'react-uid';
