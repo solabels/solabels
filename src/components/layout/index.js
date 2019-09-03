@@ -15,7 +15,7 @@ import 'bootstrap/dist/css/bootstrap-reboot.min.css';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 
 import './layout.css';
-import Nav from '../nav2';
+import Nav from '../nav';
 import FooterContact from '../footerContact';
 import Footer from '../footer';
 
