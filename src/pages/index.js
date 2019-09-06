@@ -9,6 +9,7 @@ import 'bootstrap/dist/css/bootstrap-grid.min.css';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import CmsRow from '../components/cmsRow';
+import SolarSchema from '../components/solar-schema';
 
 const RenderCMS = ({ prismic }) => {
   return (
@@ -20,6 +21,7 @@ const RenderCMS = ({ prismic }) => {
           </Col>
         </Row>
       ))}
+      <SolarSchema />
     </div>
   );
 };
