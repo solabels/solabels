@@ -12,7 +12,9 @@ const ScorllContainer = styled.div`
   display: flex;
   position: relative;
   padding: 5rem;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(255, 255, 255, 1);
+  box-shadow: inset 0px 2px 14px 0px rgba(0, 0, 0, 0.35);
+  z-index: 4;
   @media ${ props => props.theme.media.lg } {
     overflow-x: scroll;
   }
@@ -24,6 +26,13 @@ const SolarSetupImgContainer = styled.div`
   margin: 0 auto;
   padding-top: 4rem;
   padding-bottom: 4rem;
+  h2 {
+    font-size: 3rem;
+    text-align: center;
+    @media ${ props => props.theme.media.lg } {
+      text-align: left;
+    }
+  }
 `;
 
 const SolarSetupImg = styled.img`
@@ -129,7 +138,7 @@ const SolarSchema = () => {
   return (
     <ScorllContainer className="solar-schema-container">
       <SolarSetupImgContainer>
-        <h2 style={{ fontSize: '3rem', textAlign: 'center' }}>Solar Label Schema</h2>
+        <h2>Solar Label Schema</h2>
         <SolarSetupImg src={SolarSetup} />
         <LabelTooltip
           style={{ bottom: '15%', left: '3.3%' }}

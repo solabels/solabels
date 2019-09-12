@@ -18,6 +18,8 @@ const RenderCMS = ({ prismic }) => {
             img={project.primary.image.url}
             name={project.primary.title[0].text}
             location={project.primary.location[0].text}
+            capacity={project.primary.capacity[0].text}
+            labels={project.primary.labels[0].text}
             text={project.primary.text}
           />
         );
@@ -45,6 +47,8 @@ const query = graphql`
                   image
                   title
                   location
+                  capacity
+                  labels
                   text
                 }
               }

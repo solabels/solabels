@@ -60,11 +60,13 @@ const ThreeSlots = ({ data }) => {
       <ThreeSlotsWrapper className="three-slots">
         <Fade top>
           <Row>
-            {fields.map(item => {
+            {fields.map((item, index) => {
               return (
                 <Col sm="4" key={uid(item)}>
                   <Slot>
-                    <span>{isShown && <CountUp end={item.number} duration={4} />}</span>
+                    <span>
+                      {isShown && <CountUp end={item.number} duration={4} />} {index === 1 && '+'}
+                    </span>
                     <p>{item.title[0].text}</p>
                   </Slot>
                 </Col>

@@ -7,14 +7,14 @@ const ProjectWrapper = styled.section`
   margin: 0 auto;
   max-width: 100rem;
   padding: 1.5rem;
-  background-color: rgba(2, 102, 112, 0.7);
+  background-color: rgba(2, 102, 112, 0.85);
   margin-bottom: 2.5rem;
   flex-direction: row;
   transition: 0.5s background-color;
   @media ${ props => props.theme.media.lg } {
     flex-direction: column !important;
   }
-  &:nth-of-type(2) {
+  &:nth-of-type(2n) {
     flex-direction: row-reverse;
   }
   &:hover {
@@ -40,12 +40,12 @@ const ProjectInfo = styled.div`
   }
 `;
 
-const Project = ({ img, name, location, text }) => {
+const Project = ({ img, name, location, capacity, labels, text }) => {
   return (
     <ProjectWrapper>
       <ProjectCell>
         <div>
-          <img className="img-responsive" src={img} />
+          <img className="img-responsive" src={img} alt={name} />
         </div>
       </ProjectCell>
       <ProjectCell>
@@ -54,6 +54,8 @@ const Project = ({ img, name, location, text }) => {
             <strong>{name}</strong>
           </div>
           <div className="underline">{location}</div>
+          <div>{capacity}</div>
+          <div>{labels}</div>
           <div style={{ marginTop: '2rem' }}>{RichText.render(text)}</div>
         </ProjectInfo>
       </ProjectCell>
