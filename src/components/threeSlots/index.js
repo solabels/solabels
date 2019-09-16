@@ -42,6 +42,7 @@ const ThreeSlots = ({ data }) => {
   }
 
   function trackScrolling () {
+    console.log('kor');
     if (typeof document !== 'undefined') {
       const wrappedElement = document.querySelector('.three-slots');
       if (isBottom(wrappedElement)) {

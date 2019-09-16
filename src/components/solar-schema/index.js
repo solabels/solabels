@@ -9,9 +9,6 @@ import SolarSetup from './solar-setup.svg';
 import Label from './label.svg';
 import BgTexture from './skyline-texture.png';
 
-import ExampleLabel1 from './example-label-1.png';
-import ExampleLabel2 from './example-label-2.png';
-
 const ScorllContainer = styled.div`
   display: flex;
   position: relative;
@@ -130,11 +127,8 @@ const SolarSchemaCMS = ({ prismic }) => {
   const [arrowClass, setArrowClass] = useState('');
 
   useEffect(() => {
-    if (typeof document !== 'undefined') {
-      const schemaContainer = document.querySelector('.solar-schema-container');
-      schemaContainer.addEventListener('scroll', onScrollDiv);
-      return schemaContainer.removeEventListener('scroll', onScrollDiv);
-    }
+    const schemaContainer = document.querySelector('.solar-schema-container');
+    schemaContainer.addEventListener('scroll', onScrollDiv);
   });
 
   const onScrollDiv = e => {
