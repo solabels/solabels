@@ -37,7 +37,7 @@ const Text = styled.div`
 const HeadlineText = ({ data }) => {
   const { primary } = data;
   return (
-    <HeadlineTextWrapper className="scroll-to">
+    <HeadlineTextWrapper className="scroll-to-down">
       <div style={{ maxWidth: '74rem', margin: 'auto' }}>
         <Title>{RichText.render(primary.title)}</Title>
         <Text>{RichText.render(primary.text)}</Text>

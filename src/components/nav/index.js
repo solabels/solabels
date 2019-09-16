@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
 import styled from '@emotion/styled';
+import scrollTo from '../../util/scrollTo';
 
 const Nav = styled.nav`
   position: fixed;
@@ -91,6 +92,10 @@ const NavMenu = ({ navDarken }) => {
       setActiveClass('');
     }
   };
+
+  const scrollToContact = () => {
+    scrollTo('.scroll-to-contact');
+  };
   return (
     <Nav className={activeClass} navDarken={navDarken}>
       <Logo>solabels</Logo>
@@ -108,7 +113,7 @@ const NavMenu = ({ navDarken }) => {
           <Link to="/about">About</Link>
         </li>
       </ul>
-      <ContactButton>Contact</ContactButton>
+      <ContactButton onClick={scrollToContact}>Contact</ContactButton>
     </Nav>
   );
 };

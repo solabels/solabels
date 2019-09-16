@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import scrollTo from '../../util/scrollTo';
 import { FaAngleDown } from 'react-icons/fa';
 
 const Banner = styled.div`
@@ -90,12 +91,7 @@ const ScrollDown = styled.div`
 const MainBanner = ({ data }) => {
   const { primary } = data;
   const scrollDown = () => {
-    const scrollTo = document.querySelector('.scroll-to');
-
-    scrollTo.scrollIntoView({
-      behavior: 'smooth',
-      block: 'nearest'
-    });
+    scrollTo('.scroll-to-down');
   };
   return (
     // <Banner style={{ backgroundImage: `url(${ primary.image.url })`, height: primary.image.dimensions.height }}>

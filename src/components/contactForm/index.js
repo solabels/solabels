@@ -127,7 +127,7 @@ const SignupSchema = Yup.object().shape({
 
 const ContactForm = () => {
   return (
-    <ContactFormStyled>
+    <ContactFormStyled className="scroll-to-contact">
       <div style={{ display: 'flex', width: '100%' }}>
         <div className="form-style">
           <Title>
