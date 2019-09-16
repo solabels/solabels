@@ -156,9 +156,7 @@ const NavMenu = ({ navDarken }) => {
       <MobileMenuWrapper onClick={() => setToggleMobile(!toggleMobile)}>
         <IoMdMenu />
       </MobileMenuWrapper>
-      <ContactButton className={screen} onClick={scrollToContact}>
-        Contact
-      </ContactButton>
+      <ContactButton onClick={scrollToContact}>Contact</ContactButton>
       {toggleMobile && (
         <MobileMenuDropdown>
           <MenuItem scrollToContact={scrollToContact} screen="mobile" />
