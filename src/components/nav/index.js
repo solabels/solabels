@@ -77,14 +77,6 @@ const ContactButton = styled.div`
 `;
 
 const NavMenu = ({ navDarken }) => {
-  const [activeClass, setActiveClass] = useState('');
-  useEffect(() => {
-    window.addEventListener('scroll', addClassOnScroll, true);
-    return () => {
-      window.removeEventListener('scroll', addClassOnScroll);
-    };
-  }, [addClassOnScroll]);
-
   const addClassOnScroll = () => {
     if (window.scrollY > 200) {
       setActiveClass('active-scroll');
@@ -92,6 +84,15 @@ const NavMenu = ({ navDarken }) => {
       setActiveClass('');
     }
   };
+
+  const [activeClass, setActiveClass] = useState('');
+
+  useEffect(() => {
+    window.addEventListener('scroll', addClassOnScroll, true);
+    return () => {
+      window.removeEventListener('scroll', addClassOnScroll);
+    };
+  }, [addClassOnScroll]);
 
   const scrollToContact = () => {
     scrollTo('.scroll-to-contact');
