@@ -130,8 +130,11 @@ const SolarSchemaCMS = ({ prismic }) => {
   const [arrowClass, setArrowClass] = useState('');
 
   useEffect(() => {
-    const schemaContainer = document.querySelector('.solar-schema-container');
-    schemaContainer.addEventListener('scroll', onScrollDiv);
+    if (typeof document !== 'undefined') {
+      const schemaContainer = document.querySelector('.solar-schema-container');
+      schemaContainer.addEventListener('scroll', onScrollDiv);
+      return schemaContainer.removeEventListener('scroll', onScrollDiv);
+    }
   });
 
   const onScrollDiv = e => {
