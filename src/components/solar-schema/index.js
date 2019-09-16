@@ -143,7 +143,6 @@ const SolarSchemaCMS = ({ prismic }) => {
   };
 
   const labels = prismic.allSolar_label_schemas.edges[0].node.body;
-  console.log(prismic.allSolar_label_schemas.edges[0].node.headline[0].text);
   return (
     <ScorllContainer className="solar-schema-container">
       <SolarSetupImgContainer>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'gatsby';
+import { IoMdMenu } from 'react-icons/io';
 import styled from '@emotion/styled';
 import scrollTo from '../../util/scrollTo';
 
@@ -38,13 +39,29 @@ const Nav = styled.nav`
           opacity: 0.7;
         }
       }
+      &:last-of-type {
+        i {
+          display: none;
+        }
+        float: right;
+        @media ${ props => props.theme.media.lg } {
+          i {
+            display: block;
+          }
+          float: none;
+        }
+      }
+    }
+    li.desktop {
+      display: none;
     }
   }
   &.active-scroll {
     background-color: rgba(0, 0, 0, 0.7);
   }
-  @media ${ props => props.theme.media.md } {
-    ul {
+  @media ${ props => props.theme.media.lg } {
+    padding: 1rem 3rem;
+    ul.desktop {
       display: none;
     }
   }
@@ -71,8 +88,42 @@ const ContactButton = styled.div`
   background-color: var(--color-1);
   border: 0.2rem solid var(--color-1);
   cursor: pointer;
-  @media ${ props => props.theme.media.md } {
+  @media ${ props => props.theme.media.lg } {
     display: none;
+  }
+  &.mobile {
+    display: block;
+    text-align: center;
+    width: 100%;
+  }
+`;
+
+const MobileMenuWrapper = styled.div`
+  display: none;
+  font-size: 2.5rem;
+  color: white;
+  margin-left: auto;
+  cursor: pointer;
+  @media ${ props => props.theme.media.lg } {
+    display: block;
+  }
+`;
+
+const MobileMenuDropdown = styled.div`
+  display: none;
+  position: fixed;
+  top: 5.7rem;
+  left: 0rem;
+  width: 100%;
+  background-color: black;
+  @media ${ props => props.theme.media.lg } {
+    display: block;
+    ul {
+      li {
+        display: block !important;
+        padding: 0.7rem 3rem;
+      }
+    }
   }
 `;
 
@@ -84,8 +135,12 @@ const NavMenu = ({ navDarken }) => {
       setActiveClass('');
     }
   };
+  const scrollToContact = () => {
+    scrollTo('.scroll-to-contact');
+  };
 
   const [activeClass, setActiveClass] = useState('');
+  const [toggleMobile, setToggleMobile] = useState(false);
 
   useEffect(() => {
     window.addEventListener('scroll', addClassOnScroll, true);
@@ -94,13 +149,29 @@ const NavMenu = ({ navDarken }) => {
     };
   }, [addClassOnScroll]);
 
-  const scrollToContact = () => {
-    scrollTo('.scroll-to-contact');
-  };
   return (
-    <Nav className={activeClass} navDarken={navDarken}>
+    <Nav className={activeClass} navDarken={navDarken} style={toggleMobile ? { backgroundColor: 'black' } : {}}>
       <Logo>solabels</Logo>
-      <ul>
+      <MenuItem scrollToContact={scrollToContact} screen="desktop" />
+      <MobileMenuWrapper onClick={() => setToggleMobile(!toggleMobile)}>
+        <IoMdMenu />
+      </MobileMenuWrapper>
+      <ContactButton className={screen} onClick={scrollToContact}>
+        Contact
+      </ContactButton>
+      {toggleMobile && (
+        <MobileMenuDropdown>
+          <MenuItem scrollToContact={scrollToContact} screen="mobile" />
+        </MobileMenuDropdown>
+      )}
+    </Nav>
+  );
+};
+
+const MenuItem = ({ screen, scrollToContact }) => {
+  return (
+    <>
+      <ul className={screen}>
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -113,9 +184,14 @@ const NavMenu = ({ navDarken }) => {
         <li>
           <Link to="/about">About</Link>
         </li>
+        <li className={screen} onClick={scrollToContact}>
+          Contact
+        </li>
+        <li>
+          <a href="tel:3215064704">(321) 506-4704</a>
+        </li>
       </ul>
-      <ContactButton onClick={scrollToContact}>Contact</ContactButton>
-    </Nav>
+    </>
   );
 };
 

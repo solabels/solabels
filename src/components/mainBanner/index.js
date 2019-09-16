@@ -11,6 +11,10 @@ const Banner = styled.div`
   background-color: var(--color-1);
   overflow: hidden;
   z-index: 2;
+  height: 45vw;
+  @media ${ props => props.theme.media.md } {
+    height: 50vw;
+  }
   video {
     position: absolute;
     top: 0;
@@ -95,7 +99,7 @@ const MainBanner = ({ data }) => {
   };
   return (
     // <Banner style={{ backgroundImage: `url(${ primary.image.url })`, height: primary.image.dimensions.height }}>
-    <Banner style={{ height: '45vw' }}>
+    <Banner>
       <TopGradient />
       <Text>
         <h1>{primary.text[0].text}</h1>

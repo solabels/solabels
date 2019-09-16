@@ -51,6 +51,7 @@ const query = graphql`
                 type
                 fields {
                   number
+                  symbol_after
                   text
                   title
                 }
