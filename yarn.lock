@@ -5659,7 +5659,7 @@ gatsby-source-filesystem@^2.0.1, gatsby-source-filesystem@^2.1.2, gatsby-source-
     valid-url "^1.0.9"
     xstate "^3.3.3"
 
-gatsby-source-graphql-universal@^3.1.4, gatsby-source-graphql-universal@^3.1.6:
+gatsby-source-graphql-universal@^3.0.5, gatsby-source-graphql-universal@^3.1.4:
   version "3.1.7"
   resolved "https://registry.yarnpkg.com/gatsby-source-graphql-universal/-/gatsby-source-graphql-universal-3.1.7.tgz#b9c0df9251b1660200b9bc57ce2634085fbf10f4"
   integrity sha512-JJB3tlNc0/O7Rm4rLl4WGetBFrPWF0UhXfwso2e126XCE6EN9OVu+8dFivZ2nzTR8qvjMcMCtXgQd1yTbFF34A==
@@ -5688,7 +5688,7 @@ gatsby-source-graphql@^2.0.15, gatsby-source-graphql@^2.0.8:
     node-fetch "^1.7.3"
     uuid "^3.3.3"
 
-gatsby-source-prismic-graphql@^3.3.1:
+gatsby-source-prismic-graphql@^3.2.0:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/gatsby-source-prismic-graphql/-/gatsby-source-prismic-graphql-3.3.1.tgz#85524af96ce68431d571ab67cf3dbb94837c2b4a"
   integrity sha512-ZQLCODgfTpvlkwHj2zoZ/lTd64DHNwRbssKRhdKJzfbYlFqHCf1y+aUfJUKTYJFEtE7PhgGtr48ZMLZGSuFupw==

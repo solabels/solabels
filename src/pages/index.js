@@ -6,6 +6,7 @@ import { withPreview } from 'gatsby-source-prismic-graphql';
 import 'bootstrap/dist/css/bootstrap-reboot.min.css';
 import 'bootstrap/dist/css/bootstrap-grid.min.css';
 
+import SolarSchemaWrapper from '../components/SolarSchemaWrapper';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 import CmsRow from '../components/cmsRow';
@@ -21,7 +22,9 @@ const RenderCMS = ({ prismic }) => {
           </Col>
         </Row>
       ))}
-      <SolarSchema />
+      <SolarSchemaWrapper isHomepage={true}>
+        <SolarSchema />
+      </SolarSchemaWrapper>
     </div>
   );
 };

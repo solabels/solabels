@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import { IoMdMenu } from 'react-icons/io';
 import styled from '@emotion/styled';
 import scrollTo from '../../util/scrollTo';
+import Logo from '../logo';
 
 const Nav = styled.nav`
   position: fixed;
@@ -67,7 +68,7 @@ const Nav = styled.nav`
   }
 `;
 
-const Logo = styled.div`
+const LogoWrapper = styled.div`
   display: flex;
   margin-right: 5rem;
   font-size: 2rem;
@@ -151,12 +152,16 @@ const NavMenu = ({ navDarken }) => {
 
   return (
     <Nav className={activeClass} navDarken={navDarken} style={toggleMobile ? { backgroundColor: 'black' } : {}}>
-      <Logo>solabels</Logo>
+      <LogoWrapper>
+        <Logo />
+      </LogoWrapper>
       <MenuItem scrollToContact={scrollToContact} screen="desktop" />
       <MobileMenuWrapper onClick={() => setToggleMobile(!toggleMobile)}>
         <IoMdMenu />
       </MobileMenuWrapper>
-      <ContactButton onClick={scrollToContact}>Contact</ContactButton>
+      <Link to="#scroll_to_contact">
+        <ContactButton>Contact</ContactButton>
+      </Link>
       {toggleMobile && (
         <MobileMenuDropdown>
           <MenuItem scrollToContact={scrollToContact} screen="mobile" />
@@ -182,8 +187,8 @@ const MenuItem = ({ screen, scrollToContact }) => {
         <li>
           <Link to="/about">About</Link>
         </li>
-        <li className={screen} onClick={scrollToContact}>
-          Contact
+        <li className={screen}>
+          <Link to="#scroll_to_contact">Contact</Link>
         </li>
         <li>
           <a href="tel:3215064704">(321) 506-4704</a>

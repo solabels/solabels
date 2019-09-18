@@ -127,63 +127,65 @@ const SignupSchema = Yup.object().shape({
 
 const ContactForm = () => {
   return (
-    <ContactFormStyled className="scroll-to-contact">
-      <div style={{ display: 'flex', width: '100%' }}>
-        <div className="form-style">
-          <Title>
-            <strong>Contact</strong> us:
-          </Title>
-          <Formik
-            initialValues={{ email: '', fullName: '', phone: '', text: '' }}
-            validationSchema={SignupSchema}
-            onSubmit={(values, { setSubmitting }) => {
-              // setTimeout(() => {
-              //   alert(JSON.stringify(values, null, 2));
-              //   setSubmitting(false);
-              // }, 400);
-            }}
-          >
-            {({ isSubmitting }) => (
-              <Form style={{ margin: '0 auto' }}>
-                <FormWrapper>
-                  <Label>Full Name: *</Label> <ErrorMessage name="fullName" component={ErrorMessageSpan} />
-                  <Field type="text" name="fullName" />
-                </FormWrapper>
-                <FormWrapper>
-                  <Label>Email: *</Label> <ErrorMessage name="email" component={ErrorMessageSpan} />
-                  <Field type="email" name="email" />
-                </FormWrapper>
-                <FormWrapper>
-                  <Label>Phone:</Label> <ErrorMessage name="phone" component={ErrorMessageSpan} />
-                  <Field type="text" name="phone" />
-                </FormWrapper>
-                <FormWrapper>
-                  <Label>Message: *</Label> <ErrorMessage name="text" component={ErrorMessageSpan} />
-                  <Field type="textarea" name="text" component="textarea" />
-                </FormWrapper>
-                <Button type="submit" disabled={isSubmitting}>
-                  <span>SEND</span>
-                </Button>
-              </Form>
-            )}
-          </Formik>
-        </div>
-        <div className="contact-style">
-          <div className="contact-style--content">
-            <h4 style={{ fontSize: '2.2rem' }}>solabels</h4>
-            <p>
-              Phones: 321-506-4704
-              <br />
-              322-501-4411, 412-133-3112
-            </p>
-            <p>
-              1600 Pennsylvania Ave NW,
-              <br /> Washington, DC 20500, USA
-            </p>
+    <div id="scroll_to_contact" style={{ paddingTop: '2.5rem' }}>
+      <ContactFormStyled>
+        <div style={{ display: 'flex', width: '100%' }}>
+          <div className="form-style">
+            <Title>
+              <strong>Contact</strong> us:
+            </Title>
+            <Formik
+              initialValues={{ email: '', fullName: '', phone: '', text: '' }}
+              validationSchema={SignupSchema}
+              onSubmit={(values, { setSubmitting }) => {
+                // setTimeout(() => {
+                //   alert(JSON.stringify(values, null, 2));
+                //   setSubmitting(false);
+                // }, 400);
+              }}
+            >
+              {({ isSubmitting }) => (
+                <Form style={{ margin: '0 auto' }}>
+                  <FormWrapper>
+                    <Label>Full Name: *</Label> <ErrorMessage name="fullName" component={ErrorMessageSpan} />
+                    <Field type="text" name="fullName" />
+                  </FormWrapper>
+                  <FormWrapper>
+                    <Label>Email: *</Label> <ErrorMessage name="email" component={ErrorMessageSpan} />
+                    <Field type="email" name="email" />
+                  </FormWrapper>
+                  <FormWrapper>
+                    <Label>Phone:</Label> <ErrorMessage name="phone" component={ErrorMessageSpan} />
+                    <Field type="text" name="phone" />
+                  </FormWrapper>
+                  <FormWrapper>
+                    <Label>Message: *</Label> <ErrorMessage name="text" component={ErrorMessageSpan} />
+                    <Field type="textarea" name="text" component="textarea" />
+                  </FormWrapper>
+                  <Button type="submit" disabled={isSubmitting}>
+                    <span>SEND</span>
+                  </Button>
+                </Form>
+              )}
+            </Formik>
+          </div>
+          <div className="contact-style">
+            <div className="contact-style--content">
+              <h4 style={{ fontSize: '2.2rem' }}>solabels</h4>
+              <p>
+                Phones: 321-506-4704
+                <br />
+                322-501-4411, 412-133-3112
+              </p>
+              <p>
+                1600 Pennsylvania Ave NW,
+                <br /> Washington, DC 20500, USA
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </ContactFormStyled>
+      </ContactFormStyled>
+    </div>
   );
 };
 
