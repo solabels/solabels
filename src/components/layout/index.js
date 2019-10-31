@@ -51,8 +51,8 @@ const renderLayout = data => {
             background-attachment: fixed;
             background-size: contain;
             background-color: var(--color-5);
-            @media ${ props => props.theme.media.sm } {
-              background-size: cover;
+            @media ${ props => props.theme.media.xs } {
+              background-size: 400%;
             }
           }
         `}
