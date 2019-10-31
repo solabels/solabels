@@ -7,6 +7,11 @@ const FooterWrapper = styled.footer`
   color: #fff;
   font-size: 1.4rem;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
+    .footer-copyright{
+      @media ${ props => props.theme.media.sm } {
+        display: none;
+      }
+    }
   a {
     color: white;
     text-decoration: none;
@@ -35,7 +40,7 @@ const Footer = () => {
         <a href="">Privacy Policy</a>
         <a href=""> Terms & Conditions</a>
       </PrivacyAndTerms>
-      <div style={{ textAlign: 'right' }}>
+      <div class="footer-copyright" style={{ textAlign: 'right' }}>
         © {new Date().getFullYear()}, Copyright <a href="https://www.solabels.com">Solabels</a>
       </div>
     </FooterWrapper>
