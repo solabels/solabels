@@ -46,11 +46,14 @@ const renderLayout = data => {
           body {
             overflow-x: hidden;
             background-image: url(${ layoutProps.background_image.url });
-            background-position: right bottom;
+            background-position: right center;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: contain;
             background-color: var(--color-5);
+            @media ${ props => props.theme.media.sm } {
+              background-size: cover;
+            }
           }
         `}
       />

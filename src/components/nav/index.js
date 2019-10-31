@@ -130,7 +130,7 @@ const MobileMenuDropdown = styled.div`
 
 const NavMenu = ({ navDarken }) => {
   const addClassOnScroll = () => {
-    if (window.scrollY > 200) {
+    if (window.scrollY > 50) {
       setActiveClass('active-scroll');
     } else {
       setActiveClass('');

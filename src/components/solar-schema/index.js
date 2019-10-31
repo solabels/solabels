@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { Row, Col } from 'reactstrap';
-import { Link, graphql, StaticQuery } from 'gatsby';
+import { graphql, StaticQuery } from 'gatsby';
 import { RichText } from 'prismic-reactjs';
 import { withPreview } from 'gatsby-source-prismic-graphql';
 
@@ -68,7 +68,11 @@ const LabelTooltipWrapper = styled.div`
     transform: translateX(-35%);
     box-shadow: 0.1rem 1rem 0.5rem -0.4rem rgba(0, 0, 0, 0.2);
     @media ${ props => props.theme.media.lg } {
-      position: absolute;
+      position: fixed;
+      width: 40rem;
+      top: 15%;
+      left:50%;
+      transform: translateX(-50%);
     }
   }
   &:hover {

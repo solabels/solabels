@@ -1,11 +1,12 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { Link, graphql, StaticQuery } from 'gatsby';
+import { graphql, StaticQuery } from 'gatsby';
 import { Container, Row, Col } from 'reactstrap';
 import { withPreview } from 'gatsby-source-prismic-graphql';
 import SolarSchema from '../components/solar-schema';
 import { FaToiletPaper, FaTools } from 'react-icons/fa';
 
+import PageContainer from '../components/page-container';
 import Layout from '../components/layout';
 import SolarSchemaWrapper from '../components/SolarSchemaWrapper';
 import SEO from '../components/seo';
@@ -31,9 +32,10 @@ const RenderCMS = ({ prismic }) => {
     <div style={{ margin: '12.5rem 0 12.5rem' }}>
       <h1 style={{ margin: '5rem 0', textAlign: 'center', fontWeight: '800' }}>Services</h1>
       <Container>
+        <PageContainer>
         <Row style={{ paddingBottom: '4rem' }}>
           <Col>
-            <p style={{ fontSize: '2rem' }}>
+            <p style={{ fontSize: '1.6rem' }}>
               Here at <strong>SOlabels</strong> our business is simplifying your business. We offer a number of categorized products and are always
               looking for new ways to serve and create value for our customers. We have produced label packages for many utility-scale and commercial
               solar arrays. Our services enable our customers to reduce on-site personnel and control the costs of site-specific label generation.
@@ -87,6 +89,7 @@ const RenderCMS = ({ prismic }) => {
             </ServicesList>
           </Col>
         </Row>
+        </PageContainer>
       </Container>
       <SolarSchemaWrapper style={{ marginTop: '2rem' }} isHomepage={false}>
         <SolarSchema />

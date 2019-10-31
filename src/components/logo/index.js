@@ -1,10 +1,9 @@
 import React from 'react';
-import { graphql, StaticQuery } from 'gatsby';
+import { Link, graphql, StaticQuery } from 'gatsby';
 import { withPreview } from 'gatsby-source-prismic-graphql';
 
 const RenderCMS = ({ prismic }) => {
-  console.log(prismic.allLogos.edges[0].node.logo.url);
-  return <img height="25" src={prismic.allLogos.edges[0].node.logo.url} />;
+  return <Link href="/"><img height="25" src={prismic.allLogos.edges[0].node.logo.url} /></Link>;
 };
 
 const Logo = () => {

@@ -11,7 +11,11 @@ import Helmet from 'react-helmet';
 import { graphql } from 'gatsby';
 
 function SEO ({ description, lang, meta, title }) {
-  return <div></div>;
+  return <div>
+    <Helmet>
+      
+    </Helmet>
+  </div>;
 }
 
 SEO.defaultProps = {

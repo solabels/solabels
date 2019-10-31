@@ -3,17 +3,21 @@ import { graphql, StaticQuery } from 'gatsby';
 import { withPreview } from 'gatsby-source-prismic-graphql';
 
 import AboutContent from '../components/paragraph';
+import PageContainer from '../components/page-container';
+import { Container, Row, Col } from 'reactstrap';
 import Layout from '../components/layout';
 import SEO from '../components/seo';
 
 const RenderCMS = ({ prismic }) => {
   return (
-    <div style={{ margin: '12.5rem 0 30rem' }}>
-      <h1 style={{ margin: '5rem 0', textAlign: 'center', fontWeight: '800' }}>About us</h1>
-      <div>
-        <AboutContent text={prismic.allAbouts.edges[0].node.text} />
+    <Container>
+      <div style={{ margin: '12.5rem 0 30rem' }}>
+        <h1 style={{ margin: '5rem 0', textAlign: 'center', fontWeight: '800' }}>About us</h1>
+        <PageContainer>
+          <AboutContent text={prismic.allAbouts.edges[0].node.text} />
+        </PageContainer>
       </div>
-    </div>
+    </Container>
   );
 };
 
