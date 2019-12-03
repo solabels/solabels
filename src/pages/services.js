@@ -67,11 +67,12 @@ const RenderCMS = ({ prismic }) => {
               );
             })}
           </Row>
+          <SolarSchema />
         </PageContainer>
       </Container>
-      <SolarSchemaWrapper style={{ marginTop: "2rem" }} isHomepage={false}>
+      {/* <SolarSchemaWrapper style={{ marginTop: "2rem" }} isHomepage={false}>
         <SolarSchema />
-      </SolarSchemaWrapper>
+      </SolarSchemaWrapper> */}
     </div>
   );
 };
