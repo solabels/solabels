@@ -4,6 +4,7 @@ import { Row, Col } from 'reactstrap';
 import { graphql, StaticQuery } from 'gatsby';
 import { RichText } from 'prismic-reactjs';
 import { withPreview } from 'gatsby-source-prismic-graphql';
+import { FaArrowRight } from 'react-icons/fa';
 
 import SolarSetup from './solar-setup.svg';
 import Label from './label.svg';
@@ -90,9 +91,9 @@ const MobileArrow = styled.div`
   position: sticky;
   top: -3.5rem;
   margin-top: -3.5rem;
-  right: -4rem;
+  right: -3rem;
   margin-right: -2rem;
-  font-size: 3.6rem;
+  font-size: 3rem;
   height: 5rem;
   translate: 1s ease;
   animation: pulse 5s ease-in-out infinite;
@@ -195,7 +196,7 @@ const SolarSchemaCMS = ({ prismic }) => {
         />
       </SolarSetupImgContainer>
       <MobileArrow>
-        <span className={arrowClass}>🡆</span>
+        <span className={arrowClass}><FaArrowRight/></span>
       </MobileArrow>
     </ScorllContainer>
   );

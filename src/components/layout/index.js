@@ -51,7 +51,7 @@ const renderLayout = data => {
             background-attachment: fixed;
             background-size: contain;
             background-color: var(--color-5);
-            @media screen and (max-width: 1119px){
+            @media screen and (max-width: 1119px) {
               background-size: 400%;
             }
           }

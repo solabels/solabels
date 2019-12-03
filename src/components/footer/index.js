@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React from "react";
+import styled from "@emotion/styled";
 
 const FooterWrapper = styled.footer`
   padding: 2.5rem;
@@ -7,11 +7,11 @@ const FooterWrapper = styled.footer`
   color: #fff;
   font-size: 1.4rem;
   border-top: 1px solid rgba(255, 255, 255, 0.2);
-    .footer-copyright{
-      @media ${ props => props.theme.media.sm } {
-        display: none;
-      }
+  .footer-copyright {
+    @media ${props => props.theme.media.sm} {
+      display: none;
     }
+  }
   a {
     color: white;
     text-decoration: none;
@@ -35,13 +35,16 @@ const PrivacyAndTerms = styled.div`
 
 const Footer = () => {
   return (
-    <FooterWrapper style={{ backgroundColor: 'var(--color-1)', color: 'white' }}>
+    <FooterWrapper
+      style={{ backgroundColor: "var(--color-1)", color: "white" }}
+    >
       <PrivacyAndTerms>
-        <a href="">Privacy Policy</a>
-        <a href=""> Terms & Conditions</a>
+        <a href=''>Privacy Policy</a>
+        <a href=''> Terms & Conditions</a>
       </PrivacyAndTerms>
-      <div class="footer-copyright" style={{ textAlign: 'right' }}>
-        © {new Date().getFullYear()}, Copyright <a href="https://www.solabels.com">Solabels</a>
+      <div className='footer-copyright' style={{ textAlign: "right" }}>
+        © {new Date().getFullYear()}, Copyright{" "}
+        <a href='https://www.solabels.com'>Solabels</a>
       </div>
     </FooterWrapper>
   );
