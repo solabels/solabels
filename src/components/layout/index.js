@@ -5,28 +5,28 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from 'react';
-import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from 'gatsby';
-import { Global, css } from '@emotion/core';
-import { withPreview } from 'gatsby-source-prismic-graphql';
-import { ThemeProvider } from 'emotion-theming';
-import 'bootstrap/dist/css/bootstrap-reboot.min.css';
-import 'bootstrap/dist/css/bootstrap-grid.min.css';
+import React from "react";
+import PropTypes from "prop-types";
+import { StaticQuery, graphql } from "gatsby";
+import { Global, css } from "@emotion/core";
+import { withPreview } from "gatsby-source-prismic-graphql";
+import { ThemeProvider } from "emotion-theming";
+import "bootstrap/dist/css/bootstrap-reboot.min.css";
+import "bootstrap/dist/css/bootstrap-grid.min.css";
 
-import './layout.css';
-import Nav from '../nav';
-import FooterContact from '../footerContact';
-import Footer from '../footer';
+import "./layout.css";
+import Nav from "../nav";
+import FooterContact from "../footerContact";
+import Footer from "../footer";
 
 const theme = {
   zIndex: {},
   media: {
-    xl: 'screen and (max-width: 1199px)',
-    lg: 'screen and (max-width: 991px)',
-    md: 'screen and (max-width: 767px)',
-    sm: 'screen and (max-width: 575px)',
-    xs: 'screen and (max-width: 0px)'
+    xl: "screen and (max-width: 1199px)",
+    lg: "screen and (max-width: 991px)",
+    md: "screen and (max-width: 767px)",
+    sm: "screen and (max-width: 575px)",
+    xs: "screen and (max-width: 0px)"
   }
 };
 
@@ -37,19 +37,19 @@ const renderLayout = data => {
       <Global
         styles={css`
           :root {
-            --color-1: ${ layoutProps.color1 };
-            --color-2: ${ layoutProps.color2 };
-            --color-3: ${ layoutProps.color3 };
-            --color-4: ${ layoutProps.color4 };
-            --color-5: ${ layoutProps.color5 };
+            --color-1: ${layoutProps.color1};
+            --color-2: ${layoutProps.color2};
+            --color-3: ${layoutProps.color3};
+            --color-4: ${layoutProps.color4};
+            --color-5: ${layoutProps.color5};
           }
           body {
             overflow-x: hidden;
-            background-image: url(${ layoutProps.background_image.url });
+            background-image: url(${layoutProps.background_image.url});
             background-position: right center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            background-size: contain;
+            background-size: cover;
             background-color: var(--color-5);
             @media screen and (max-width: 1119px) {
               background-size: 400%;
@@ -67,7 +67,7 @@ export const Layout = ({ children, navDarken }) => {
       <StaticQuery query={query} render={withPreview(renderLayout, query)} />
       <Nav navDarken={navDarken} />
       <main>{children}</main>
-      <div style={{ marginTop: '15rem' }}></div>
+      <div style={{ marginTop: "15rem" }}></div>
       <FooterContact />
       <Footer />
     </ThemeProvider>

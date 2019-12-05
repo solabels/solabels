@@ -15,10 +15,10 @@ const RenderCMS = ({ prismic }) => {
         <h1
           style={{ margin: "5rem 0", textAlign: "center", fontWeight: "800" }}
         >
-          About us
+          Terms & Conditions
         </h1>
         <PageContainer>
-          <AboutContent text={prismic.allAbouts.edges[0].node.text} />
+          <AboutContent text={prismic.allTocs.edges[0].node.text} />
         </PageContainer>
       </div>
     </Container>
@@ -35,7 +35,7 @@ const About = () => (
 const query = graphql`
   query {
     prismic {
-      allAbouts {
+      allTocs {
         edges {
           node {
             text

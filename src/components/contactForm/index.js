@@ -1,7 +1,9 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import * as Yup from 'yup';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import React from "react";
+import styled from "@emotion/styled";
+import * as Yup from "yup";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import { graphql, StaticQuery } from "gatsby";
+import { withPreview } from "gatsby-source-prismic-graphql";
 
 const ContactFormStyled = styled.div`
   display: flex;
@@ -10,7 +12,7 @@ const ContactFormStyled = styled.div`
   margin: 20rem auto 10rem;
   box-shadow: 0.1rem 1rem 0.5rem -0.4rem rgba(0, 0, 0, 0.2);
   max-width: 60rem;
-  font-family: 'Titillium Web', sans-serif;
+  font-family: "Titillium Web", sans-serif;
   color: white;
   transition: 0.5s max-width;
   transition-delay: 0.2s;
@@ -19,7 +21,7 @@ const ContactFormStyled = styled.div`
     width: 100%;
     form {
       width: 50rem;
-      @media ${ props => props.theme.media.md } {
+      @media ${props => props.theme.media.md} {
         width: 100%;
       }
     }
@@ -44,12 +46,12 @@ const ContactFormStyled = styled.div`
     max-width: 100rem;
     .form-style {
       width: 60%;
-      @media ${ props => props.theme.media.md } {
+      @media ${props => props.theme.media.md} {
         width: 100%;
       }
     }
     .contact-style {
-      @media ${ props => props.theme.media.md } {
+      @media ${props => props.theme.media.md} {
         width: 0%;
         display: none;
       }
@@ -102,7 +104,7 @@ const Button = styled.button`
     padding: 0.5rem;
     border: 0.3rem solid var(--color-1);
     font-size: 1.5rem;
-    font-family: 'Titillium Web', sans-serif;
+    font-family: "Titillium Web", sans-serif;
     font-weight: 600;
   }
 `;
@@ -114,28 +116,28 @@ const FormWrapper = styled.div`
 
 const SignupSchema = Yup.object().shape({
   fullName: Yup.string()
-    .min(2, 'Too Short!')
-    .max(50, 'Too Long!')
-    .required('Required Name'),
+    .min(2, "Too Short!")
+    .max(50, "Too Long!")
+    .required("Required Name"),
   email: Yup.string()
-    .email('Invalid email')
-    .required('Required Email'),
+    .email("Invalid email")
+    .required("Required Email"),
   text: Yup.string()
-    .min(2, 'Too Short!')
-    .required('Required Message')
+    .min(2, "Too Short!")
+    .required("Required Message")
 });
 
 const ContactForm = () => {
   return (
-    <div id="scroll_to_contact" style={{ paddingTop: '2.5rem' }}>
+    <div id='scroll_to_contact' style={{ paddingTop: "2.5rem" }}>
       <ContactFormStyled>
-        <div style={{ display: 'flex', width: '100%' }}>
-          <div className="form-style">
+        <div style={{ display: "flex", width: "100%" }}>
+          <div className='form-style'>
             <Title>
               <strong>Contact</strong> us:
             </Title>
             <Formik
-              initialValues={{ email: '', fullName: '', phone: '', text: '' }}
+              initialValues={{ email: "", fullName: "", phone: "", text: "" }}
               validationSchema={SignupSchema}
               onSubmit={(values, { setSubmitting }) => {
                 // setTimeout(() => {
@@ -145,48 +147,76 @@ const ContactForm = () => {
               }}
             >
               {({ isSubmitting }) => (
-                <Form style={{ margin: '0 auto' }}>
+                <Form style={{ margin: "0 auto" }}>
                   <FormWrapper>
-                    <Label>Full Name: *</Label> <ErrorMessage name="fullName" component={ErrorMessageSpan} />
-                    <Field type="text" name="fullName" />
+                    <Label>Full Name: *</Label>{" "}
+                    <ErrorMessage
+                      name='fullName'
+                      component={ErrorMessageSpan}
+                    />
+                    <Field type='text' name='fullName' />
                   </FormWrapper>
                   <FormWrapper>
-                    <Label>Email: *</Label> <ErrorMessage name="email" component={ErrorMessageSpan} />
-                    <Field type="email" name="email" />
+                    <Label>Email: *</Label>{" "}
+                    <ErrorMessage name='email' component={ErrorMessageSpan} />
+                    <Field type='email' name='email' />
                   </FormWrapper>
                   <FormWrapper>
-                    <Label>Phone:</Label> <ErrorMessage name="phone" component={ErrorMessageSpan} />
-                    <Field type="text" name="phone" />
+                    <Label>Phone:</Label>{" "}
+                    <ErrorMessage name='phone' component={ErrorMessageSpan} />
+                    <Field type='text' name='phone' />
                   </FormWrapper>
                   <FormWrapper>
-                    <Label>Message: *</Label> <ErrorMessage name="text" component={ErrorMessageSpan} />
-                    <Field type="textarea" name="text" component="textarea" />
+                    <Label>Message: *</Label>{" "}
+                    <ErrorMessage name='text' component={ErrorMessageSpan} />
+                    <Field type='textarea' name='text' component='textarea' />
                   </FormWrapper>
-                  <Button type="submit" disabled={isSubmitting}>
+                  <Button type='submit' disabled={isSubmitting}>
                     <span>SEND</span>
                   </Button>
                 </Form>
               )}
             </Formik>
           </div>
-          <div className="contact-style">
-            <div className="contact-style--content">
-              <h4 style={{ fontSize: '2.2rem' }}>solabels</h4>
-              <p>
-                Phones: 321-506-4704
-                <br />
-                322-501-4411, 412-133-3112
-              </p>
-              <p>
-                1600 Pennsylvania Ave NW,
-                <br /> Washington, DC 20500, USA
-              </p>
-            </div>
-          </div>
+          <ContactCMS />
         </div>
       </ContactFormStyled>
     </div>
   );
 };
+
+const Contact = ({ prismic }) => {
+  const contactInfo = prismic.allContactss.edges[0].node;
+  return (
+    <div className='contact-style'>
+      <div className='contact-style--content'>
+        <h4 style={{ fontSize: "2.2rem" }}>SOlabels</h4>
+        <p>Phones: {contactInfo.phone[0].text}</p>
+        <p>{contactInfo.address[0].text}</p>
+        <p>{contactInfo.email[0].text}</p>
+      </div>
+    </div>
+  );
+};
+
+const ContactCMS = () => (
+  <StaticQuery query={query} render={withPreview(Contact, query)} />
+);
+
+const query = graphql`
+  query {
+    prismic {
+      allContactss {
+        edges {
+          node {
+            address
+            email
+            phone
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default ContactForm;

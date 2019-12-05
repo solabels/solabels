@@ -1,9 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'gatsby';
-import { IoMdMenu } from 'react-icons/io';
-import styled from '@emotion/styled';
-import scrollTo from '../../util/scrollTo';
-import Logo from '../logo';
+import React, { useState, useEffect } from "react";
+import { Link } from "gatsby";
+import { IoMdMenu } from "react-icons/io";
+import styled from "@emotion/styled";
+import { graphql, StaticQuery } from "gatsby";
+import { withPreview } from "gatsby-source-prismic-graphql";
+
+import scrollTo from "../../util/scrollTo";
+import Logo from "../logo";
 
 const Nav = styled.nav`
   position: fixed;
@@ -13,8 +16,9 @@ const Nav = styled.nav`
   z-index: 1000;
   width: 100%;
   padding: 1rem 6rem;
-  font-family: 'Titillium Web', sans-serif;
-  background-color: ${ props => (props.navDarken ? 'rgba(0, 0, 0, 0.7)' : 'rgba(0, 0, 0, 0)') };
+  font-family: "Titillium Web", sans-serif;
+  background-color: ${props =>
+    props.navDarken ? "rgba(0, 0, 0, 0.7)" : "rgba(0, 0, 0, 0)"};
   transition: background-color 0.3s;
   ul {
     font-size: 2rem;
@@ -45,7 +49,7 @@ const Nav = styled.nav`
           display: none;
         }
         float: right;
-        @media ${ props => props.theme.media.lg } {
+        @media ${props => props.theme.media.lg} {
           i {
             display: block;
           }
@@ -60,7 +64,7 @@ const Nav = styled.nav`
   &.active-scroll {
     background-color: rgba(0, 0, 0, 0.7);
   }
-  @media ${ props => props.theme.media.lg } {
+  @media ${props => props.theme.media.lg} {
     padding: 1rem 3rem;
     ul.desktop {
       display: none;
@@ -89,7 +93,7 @@ const ContactButton = styled.div`
   background-color: var(--color-1);
   border: 0.2rem solid var(--color-1);
   cursor: pointer;
-  @media ${ props => props.theme.media.lg } {
+  @media ${props => props.theme.media.lg} {
     display: none;
   }
   &.mobile {
@@ -105,7 +109,7 @@ const MobileMenuWrapper = styled.div`
   color: white;
   margin-left: auto;
   cursor: pointer;
-  @media ${ props => props.theme.media.lg } {
+  @media ${props => props.theme.media.lg} {
     display: block;
   }
 `;
@@ -117,7 +121,7 @@ const MobileMenuDropdown = styled.div`
   left: 0rem;
   width: 100%;
   background-color: black;
-  @media ${ props => props.theme.media.lg } {
+  @media ${props => props.theme.media.lg} {
     display: block;
     ul {
       li {
@@ -131,40 +135,44 @@ const MobileMenuDropdown = styled.div`
 const NavMenu = ({ navDarken }) => {
   const addClassOnScroll = () => {
     if (window.scrollY > 50) {
-      setActiveClass('active-scroll');
+      setActiveClass("active-scroll");
     } else {
-      setActiveClass('');
+      setActiveClass("");
     }
   };
   const scrollToContact = () => {
-    scrollTo('.scroll-to-contact');
+    scrollTo(".scroll-to-contact");
   };
 
-  const [activeClass, setActiveClass] = useState('');
+  const [activeClass, setActiveClass] = useState("");
   const [toggleMobile, setToggleMobile] = useState(false);
 
   useEffect(() => {
-    window.addEventListener('scroll', addClassOnScroll, true);
+    window.addEventListener("scroll", addClassOnScroll, true);
     return () => {
-      window.removeEventListener('scroll', addClassOnScroll);
+      window.removeEventListener("scroll", addClassOnScroll);
     };
   }, [addClassOnScroll]);
 
   return (
-    <Nav className={activeClass} navDarken={navDarken} style={toggleMobile ? { backgroundColor: 'black' } : {}}>
+    <Nav
+      className={activeClass}
+      navDarken={navDarken}
+      style={toggleMobile ? { backgroundColor: "black" } : {}}
+    >
       <LogoWrapper>
         <Logo />
       </LogoWrapper>
-      <MenuItem scrollToContact={scrollToContact} screen="desktop" />
+      <MenuItem scrollToContact={scrollToContact} screen='desktop' />
       <MobileMenuWrapper onClick={() => setToggleMobile(!toggleMobile)}>
         <IoMdMenu />
       </MobileMenuWrapper>
-      <Link to="#scroll_to_contact">
+      <Link to='#scroll_to_contact'>
         <ContactButton>Contact</ContactButton>
       </Link>
       {toggleMobile && (
         <MobileMenuDropdown>
-          <MenuItem scrollToContact={scrollToContact} screen="mobile" />
+          <MenuItem scrollToContact={scrollToContact} screen='mobile' />
         </MobileMenuDropdown>
       )}
     </Nav>
@@ -176,26 +184,51 @@ const MenuItem = ({ screen, scrollToContact }) => {
     <>
       <ul className={screen}>
         <li>
-          <Link to="/">Home</Link>
+          <Link to='/'>Home</Link>
         </li>
         <li>
-          <Link to="/services">Services</Link>
+          <Link to='/services'>Services</Link>
         </li>
         <li>
-          <Link to="/projects">Projects</Link>
+          <Link to='/projects'>Projects</Link>
         </li>
         <li>
-          <Link to="/about">About</Link>
+          <Link to='/about'>About</Link>
         </li>
         <li className={screen}>
-          <Link to="#scroll_to_contact">Contact</Link>
+          <Link to='/#scroll_to_contact'>Contact</Link>
         </li>
         <li>
-          <a href="tel:3215064704">(321) 506-4704</a>
+          <PhoneCMS />
         </li>
       </ul>
     </>
   );
 };
+
+const Phone = ({ prismic }) => {
+  const contactInfo = prismic.allContactss.edges[0].node;
+  return (
+    <a href={`tel:${contactInfo.phone[0].text}`}>{contactInfo.phone[0].text}</a>
+  );
+};
+
+const PhoneCMS = () => (
+  <StaticQuery query={query} render={withPreview(Phone, query)} />
+);
+
+const query = graphql`
+  query {
+    prismic {
+      allContactss {
+        edges {
+          node {
+            phone
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default NavMenu;

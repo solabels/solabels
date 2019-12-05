@@ -1,37 +1,32 @@
-import React from 'react';
-import { graphql, StaticQuery } from 'gatsby';
-import { Row, Col } from 'reactstrap';
-import { uid } from 'react-uid';
-import { withPreview } from 'gatsby-source-prismic-graphql';
-import 'bootstrap/dist/css/bootstrap-reboot.min.css';
-import 'bootstrap/dist/css/bootstrap-grid.min.css';
+import React from "react";
+import { graphql, StaticQuery } from "gatsby";
+import { Row, Col } from "reactstrap";
+import { uid } from "react-uid";
+import { withPreview } from "gatsby-source-prismic-graphql";
+import "bootstrap/dist/css/bootstrap-reboot.min.css";
+import "bootstrap/dist/css/bootstrap-grid.min.css";
 
-import SolarSchemaWrapper from '../components/SolarSchemaWrapper';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
-import CmsRow from '../components/cmsRow';
-import SolarSchema from '../components/solar-schema';
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+import CmsRow from "../components/cmsRow";
 
 const RenderCMS = ({ prismic }) => {
   return (
     <div>
       {prismic.allHomepages.edges[0].node.body.map(row => (
         <Row key={uid(row)}>
-          <Col md="12">
+          <Col md='12'>
             <CmsRow type={row.type} data={row} />
           </Col>
         </Row>
       ))}
-      <SolarSchemaWrapper isHomepage={true}>
-        <SolarSchema />
-      </SolarSchemaWrapper>
     </div>
   );
 };
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Homepage" />
+    <SEO title='Homepage' />
     <StaticQuery query={query} render={withPreview(RenderCMS, query)} />
   </Layout>
 );

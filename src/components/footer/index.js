@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
 
+import { Link } from "gatsby";
+
 const FooterWrapper = styled.footer`
   padding: 2.5rem;
   text-align: center;
@@ -39,8 +41,8 @@ const Footer = () => {
       style={{ backgroundColor: "var(--color-1)", color: "white" }}
     >
       <PrivacyAndTerms>
-        <a href=''>Privacy Policy</a>
-        <a href=''> Terms & Conditions</a>
+        <Link to='/privacy'>Privacy Policy</Link>
+        <Link to='/toc'> Terms & Conditions</Link>
       </PrivacyAndTerms>
       <div className='footer-copyright' style={{ textAlign: "right" }}>
         © {new Date().getFullYear()}, Copyright{" "}

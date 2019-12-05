@@ -10,7 +10,6 @@ import { uid } from "react-uid";
 
 import PageContainer from "../components/page-container";
 import Layout from "../components/layout";
-import SolarSchemaWrapper from "../components/SolarSchemaWrapper";
 import SEO from "../components/seo";
 
 const ServicesTitle = styled.h2`
@@ -70,9 +69,6 @@ const RenderCMS = ({ prismic }) => {
           <SolarSchema />
         </PageContainer>
       </Container>
-      {/* <SolarSchemaWrapper style={{ marginTop: "2rem" }} isHomepage={false}>
-        <SolarSchema />
-      </SolarSchemaWrapper> */}
     </div>
   );
 };

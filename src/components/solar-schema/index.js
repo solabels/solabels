@@ -8,16 +8,12 @@ import { FaArrowRight } from "react-icons/fa";
 
 import SolarSetup from "./solar-setup-white.svg";
 import Label from "./label.svg";
-import BgTexture from "./skyline-texture.png";
 
 const ScorllContainer = styled.div`
   display: flex;
   position: relative;
   padding: 5rem;
-  /* background-color: rgba(255, 255, 255, 1);
-  box-shadow: inset 0px 2px 14px 0px rgba(0, 0, 0, 0.35); */
   z-index: 4;
-  /* background-image: ${`url(${BgTexture})`}; */
   @media ${props => props.theme.media.lg} {
     overflow-x: scroll;
   }
@@ -152,7 +148,6 @@ const SolarSchemaCMS = ({ prismic }) => {
   return (
     <ScorllContainer className='solar-schema-container'>
       <SolarSetupImgContainer>
-        {/* <h2>{prismic.allSolar_label_schemas.edges[0].node.headline[0].text}</h2> */}
         <SolarSetupImg src={SolarSetup} />
         <LabelTooltip
           style={{ bottom: "15%", left: "3.3%" }}
