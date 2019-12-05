@@ -134,12 +134,24 @@ const SolarSchemaCMS = ({ prismic }) => {
   useEffect(() => {
     const schemaContainer = document.querySelector(".solar-schema-container");
     schemaContainer.addEventListener("scroll", onScrollDiv);
+    document.addEventListener("scroll", onScroll);
+    return () => {
+      schemaContainer.removeEventListener("scroll", onScrollDiv);
+      document.removeEventListener("scroll", onScroll);
+    };
   });
+
+  const onScroll = e => {
+    const labelToolTip = document.querySelectorAll(".label-tooltip .tooltip");
+    // for (let i = 0; i < labelToolTip.length; i++) {
+    //   labelToolTip[i].style.display = "none";
+    // }
+  };
 
   const onScrollDiv = e => {
     if (e.target.scrollLeft > e.target.offsetWidth) {
       setArrowClass("left");
-    } else if (e.target.scrollLeft < 200) {
+    } else if (e.target.scrollLeft < 50) {
       setArrowClass("right");
     }
   };
@@ -150,6 +162,7 @@ const SolarSchemaCMS = ({ prismic }) => {
       <SolarSetupImgContainer>
         <SolarSetupImg src={SolarSetup} />
         <LabelTooltip
+          className='label-tooltip'
           style={{ bottom: "15%", left: "3.3%" }}
           LabelImage={
             labels[0] && labels[0].primary.image && labels[0].primary.image.url
@@ -157,6 +170,7 @@ const SolarSchemaCMS = ({ prismic }) => {
           LabelText={RichText.render(labels[0].primary.text)}
         />
         <LabelTooltip
+          className='label-tooltip'
           style={{ bottom: "0%", left: "14%" }}
           LabelImage={
             labels[1] && labels[1].primary.image && labels[1].primary.image.url
@@ -165,6 +179,7 @@ const SolarSchemaCMS = ({ prismic }) => {
           LabelText={RichText.render(labels[1].primary.text)}
         />
         <LabelTooltip
+          className='label-tooltip'
           style={{ bottom: "12.5%", left: "27.3%" }}
           LabelImage={
             labels[2] && labels[2].primary.image && labels[2].primary.image.url
@@ -172,6 +187,7 @@ const SolarSchemaCMS = ({ prismic }) => {
           LabelText={RichText.render(labels[2].primary.text)}
         />
         <LabelTooltip
+          className='label-tooltip'
           style={{ bottom: "0%", left: "30%" }}
           LabelImage={
             labels[3] && labels[3].primary.image && labels[3].primary.image.url
@@ -180,6 +196,7 @@ const SolarSchemaCMS = ({ prismic }) => {
           LabelText={RichText.render(labels[3].primary.text)}
         />
         <LabelTooltip
+          className='label-tooltip'
           style={{ bottom: "18%", left: "44.75%" }}
           LabelImage={
             labels[4] && labels[4].primary.image && labels[4].primary.image.url
@@ -187,6 +204,7 @@ const SolarSchemaCMS = ({ prismic }) => {
           LabelText={RichText.render(labels[4].primary.text)}
         />
         <LabelTooltip
+          className='label-tooltip'
           style={{ bottom: "0%", left: "45%" }}
           LabelImage={
             labels[5] && labels[5].primary.image && labels[5].primary.image.url
@@ -195,6 +213,7 @@ const SolarSchemaCMS = ({ prismic }) => {
           LabelText={RichText.render(labels[5].primary.text)}
         />
         <LabelTooltip
+          className='label-tooltip'
           style={{ bottom: "18%", left: "58%" }}
           LabelImage={
             labels[6] && labels[6].primary.image && labels[6].primary.image.url
@@ -202,6 +221,7 @@ const SolarSchemaCMS = ({ prismic }) => {
           LabelText={RichText.render(labels[6].primary.text)}
         />
         <LabelTooltip
+          className='label-tooltip'
           style={{ bottom: "0", left: "57.5%" }}
           LabelImage={
             labels[7] && labels[7].primary.image && labels[7].primary.image.url
