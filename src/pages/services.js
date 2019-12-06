@@ -29,10 +29,6 @@ const ServicesList = styled.ul`
 `;
 
 const RenderCMS = ({ prismic }) => {
-  const Icon = {
-    roll: <FaToiletPaper />,
-    tools: <FaTools />
-  };
   return (
     <div style={{ margin: "12.5rem 0 12.5rem" }}>
       <h1 style={{ margin: "5rem 0", textAlign: "center", fontWeight: "800" }}>
@@ -54,7 +50,12 @@ const RenderCMS = ({ prismic }) => {
               return (
                 <Col key={uid(serviceGroup)} sm='6'>
                   <ServicesTitle>
-                    <span style={{ fontSize: "3.5rem" }}>{Icon["tools"]}</span>
+                    <span style={{ fontSize: "3.5rem" }}>
+                      <img
+                        src={serviceGroup.primary.heading_icon.url}
+                        height='40'
+                      />
+                    </span>
                     {serviceGroup.primary.heading[0].text}
                   </ServicesTitle>
                   <ServicesList>
@@ -93,6 +94,7 @@ const query = graphql`
                 label
                 primary {
                   heading
+                  heading_icon
                 }
                 fields {
                   service

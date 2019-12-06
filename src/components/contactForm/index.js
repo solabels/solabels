@@ -1,4 +1,5 @@
 import React from "react";
+import { navigate } from "gatsby-link";
 import styled from "@emotion/styled";
 import * as Yup from "yup";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -16,6 +17,10 @@ const ContactFormStyled = styled.div`
   color: white;
   transition: 0.5s max-width;
   transition-delay: 0.2s;
+  input,
+  textarea {
+    font-size: 1.5rem;
+  }
   .form-style {
     transition: 0.5s;
     width: 100%;
@@ -127,7 +132,33 @@ const SignupSchema = Yup.object().shape({
     .required("Required Message")
 });
 
+function encode(data) {
+  return Object.keys(data)
+    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+    .join("&");
+}
+
 const ContactForm = () => {
+  const [state, setState] = React.useState({});
+
+  const handleChange = e => {
+    setState({ ...state, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    const form = e.target;
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({
+        "form-name": form.getAttribute("name"),
+        ...state
+      })
+    })
+      .then(() => navigate(form.getAttribute("action")))
+      .catch(error => alert(error));
+  };
   return (
     <div id='scroll_to_contact' style={{ paddingTop: "2.5rem" }}>
       <ContactFormStyled>
@@ -147,14 +178,25 @@ const ContactForm = () => {
               }}
             >
               {({ isSubmitting }) => (
-                <Form style={{ margin: "0 auto" }}>
+                <Form
+                  name='contact'
+                  method='post'
+                  action='/thanks/'
+                  data-netlify='true'
+                  data-netlify-honeypot='bot-field'
+                  onSubmit={handleSubmit}
+                >
                   <FormWrapper>
                     <Label>Full Name: *</Label>{" "}
                     <ErrorMessage
                       name='fullName'
                       component={ErrorMessageSpan}
                     />
-                    <Field type='text' name='fullName' />
+                    <Field
+                      type='text'
+                      name='fullName'
+                      onChange={handleChange}
+                    />
                   </FormWrapper>
                   <FormWrapper>
                     <Label>Email: *</Label>{" "}
