@@ -163,7 +163,7 @@ const SolarSchemaCMS = ({ prismic }) => {
         <SolarSetupImg src={SolarSetup} />
         <LabelTooltip
           className='label-tooltip'
-          style={{ bottom: "15%", left: "3.3%" }}
+          style={{ bottom: "17.5%", left: "3.2%" }}
           LabelImage={
             labels[0] && labels[0].primary.image && labels[0].primary.image.url
           }
