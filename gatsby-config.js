@@ -10,7 +10,7 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${ __dirname }/src/images`
+        path: `${__dirname}/src/images`
       }
     },
     `gatsby-transformer-sharp`,
@@ -28,11 +28,20 @@ module.exports = {
       }
     },
     {
-      resolve: 'gatsby-source-prismic-graphql',
+      resolve: "gatsby-source-prismic-graphql",
       options: {
-        repositoryName: 'solarlabel',
-        path: '/', // (optional, default: /preview)
+        repositoryName: "solarlabel",
+        path: "/", // (optional, default: /preview)
         previews: true // (optional, default: false)
+      }
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // The property ID; the tracking code won't be generated without it
+        trackingId: "UA-154111003-1",
+        // Defines where to place the tracking script - `true` in the head and `false` in the body
+        head: true
       }
     }
     // `gatsby-plugin-remove-serviceworker`
