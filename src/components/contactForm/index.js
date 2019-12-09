@@ -188,20 +188,13 @@ const ContactForm = () => {
                 >
                   <FormWrapper>
                     <Label>Full Name: *</Label>{" "}
-                    <ErrorMessage
-                      name='fullName'
-                      component={ErrorMessageSpan}
-                    />
-                    <Field
-                      type='text'
-                      name='fullName'
-                      onChange={handleChange}
-                    />
+                    <ErrorMessage name='name' component={ErrorMessageSpan} />
+                    <Field type='text' name='name' onChange={handleChange} />
                   </FormWrapper>
                   <FormWrapper>
                     <Label>Email: *</Label>{" "}
                     <ErrorMessage name='email' component={ErrorMessageSpan} />
-                    <Field type='email' name='email' />
+                    <Field type='email' name='email' onChange={handleChange} />
                   </FormWrapper>
                   <FormWrapper>
                     <Label>Phone:</Label>{" "}
@@ -210,8 +203,13 @@ const ContactForm = () => {
                   </FormWrapper>
                   <FormWrapper>
                     <Label>Message: *</Label>{" "}
-                    <ErrorMessage name='text' component={ErrorMessageSpan} />
-                    <Field type='textarea' name='text' component='textarea' />
+                    <ErrorMessage name='message' component={ErrorMessageSpan} />
+                    <Field
+                      type='textarea'
+                      name='message'
+                      onChange={handleChange}
+                      component='textarea'
+                    />
                   </FormWrapper>
                   <Button type='submit' disabled={isSubmitting}>
                     <span>SEND</span>
