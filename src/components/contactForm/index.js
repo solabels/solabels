@@ -127,6 +127,9 @@ const SignupSchema = Yup.object().shape({
   email: Yup.string()
     .email("Invalid email")
     .required("Required Email"),
+  phone: Yup.string()
+    .email("Invalid phone")
+    .required("Required Phone"),
   text: Yup.string()
     .min(2, "Too Short!")
     .required("Required Message")
@@ -143,6 +146,7 @@ const ContactForm = () => {
 
   const handleChange = e => {
     setState({ ...state, [e.target.name]: e.target.value });
+    console.log(e);
   };
 
   const handleSubmit = e => {
@@ -199,7 +203,7 @@ const ContactForm = () => {
                   <FormWrapper>
                     <Label>Phone:</Label>{" "}
                     <ErrorMessage name='phone' component={ErrorMessageSpan} />
-                    <Field type='text' name='phone' />
+                    <Field type='text' name='phone' onChange={handleChange} />
                   </FormWrapper>
                   <FormWrapper>
                     <Label>Message: *</Label>{" "}
