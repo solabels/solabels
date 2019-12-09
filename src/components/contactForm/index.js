@@ -168,7 +168,7 @@ const ContactForm = () => {
               <strong>Contact</strong> us:
             </Title>
             <Formik
-              initialValues={{ email: "", fullName: "", phone: "", text: "" }}
+              initialValues={{ fullName: "", phone: "", text: "" }}
               validationSchema={SignupSchema}
               onSubmit={(values, { setSubmitting }) => {
                 // setTimeout(() => {
@@ -194,7 +194,7 @@ const ContactForm = () => {
                   <FormWrapper>
                     <Label>Email: *</Label>{" "}
                     <ErrorMessage name='email' component={ErrorMessageSpan} />
-                    <Field type='email' name='email' onChange={handleChange} />
+                    <Field type='text' name='email' onChange={handleChange} />
                   </FormWrapper>
                   <FormWrapper>
                     <Label>Phone:</Label>{" "}
