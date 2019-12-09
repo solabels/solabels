@@ -168,7 +168,7 @@ const ContactForm = () => {
               <strong>Contact</strong> us:
             </Title>
             <Formik
-              initialValues={{ fullName: "", phone: "", text: "" }}
+              initialValues={{ fullName: "", text: "" }}
               validationSchema={SignupSchema}
               onSubmit={(values, { setSubmitting }) => {
                 // setTimeout(() => {
