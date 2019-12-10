@@ -1,7 +1,8 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import scrollTo from '../../util/scrollTo';
-import { FaAngleDown } from 'react-icons/fa';
+import React from "react";
+import styled from "@emotion/styled";
+import scrollTo from "../../util/scrollTo";
+import bannerVideo from "./solar.mp4";
+import { FaAngleDown } from "react-icons/fa";
 
 const Banner = styled.div`
   position: relative;
@@ -13,7 +14,7 @@ const Banner = styled.div`
   z-index: 2;
   height: 45vw;
   image-rendering: pixelated;
-  @media ${ props => props.theme.media.md } {
+  @media ${props => props.theme.media.md} {
     height: 100vw;
   }
   video {
@@ -25,7 +26,7 @@ const Banner = styled.div`
     margin: auto;
     transform: translate(-50%, -50%);
     pointer-events: none;
-    @media ${ props => props.theme.media.md } {
+    @media ${props => props.theme.media.md} {
       display: none;
     }
   }
@@ -34,7 +35,11 @@ const Banner = styled.div`
 const TopGradient = styled.div`
   position: absolute;
   opacity: 0.5;
-  background: linear-gradient(to bottom, var(--color-4) 5%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(
+    to bottom,
+    var(--color-4) 5%,
+    rgba(255, 255, 255, 0) 100%
+  );
   width: 100%;
   height: 100%;
   z-index: 1;
@@ -42,7 +47,11 @@ const TopGradient = styled.div`
 
 const BottomGradient = styled.div`
   position: absolute;
-  background: linear-gradient(to top, var(--color-1) 5%, rgba(255, 255, 255, 0) 100%);
+  background: linear-gradient(
+    to top,
+    var(--color-1) 5%,
+    rgba(255, 255, 255, 0) 100%
+  );
   width: 100%;
   height: 100%;
   z-index: 1;
@@ -60,7 +69,7 @@ const Text = styled.div`
   justify-content: center;
   text-align: center;
   opacity: 0.95;
-  @media ${ props => props.theme.media.md } {
+  @media ${props => props.theme.media.md} {
     h1 {
       font-size: 4rem;
     }
@@ -91,7 +100,7 @@ const ScrollDown = styled.div`
       opacity: 0.8;
     }
   }
-  @media ${ props => props.theme.media.md } {
+  @media ${props => props.theme.media.md} {
     display: none;
   }
 `;
@@ -99,21 +108,21 @@ const ScrollDown = styled.div`
 const MainBanner = ({ data }) => {
   const { primary } = data;
   const scrollDown = () => {
-    scrollTo('.scroll-to-down');
+    scrollTo(".scroll-to-down");
   };
   return (
     // <Banner style={{ backgroundImage: `url(${ primary.image.url })`, height: primary.image.dimensions.height }}>
-    <Banner style={{backgroundImage: `url(${ primary.image.url })` }}>
+    <Banner style={{ backgroundImage: `url(${primary.image.url})` }}>
       <TopGradient />
       <Text>
         <h1>{primary.text[0].text}</h1>
       </Text>
-      <video autoPlay="autoplay" muted loop>
-        <source src="https://www.findusnow.com/img/video/solarpower.mp4" type="video/mp4" />
+      <video autoPlay='autoplay' muted loop>
+        <source src={bannerVideo} type='video/mp4' />
       </video>
       <ScrollDown onClick={scrollDown}>
         <span>SCROLL DOWN</span>
-        <FaAngleDown className="icon" size="3.5rem" color="white" />
+        <FaAngleDown className='icon' size='3.5rem' color='white' />
       </ScrollDown>
       <BottomGradient />
     </Banner>

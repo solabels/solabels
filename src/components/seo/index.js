@@ -14,10 +14,7 @@ function SEO() {
   return (
     <div>
       <Helmet>
-        <title>
-          Solabels co. - A proven solution for your custom solar labeling needs
-          - from label design to printing, sorting and shipping.{" "}
-        </title>
+        <title>SOlabels - Solar Labeling Company</title>
         <meta
           name='description'
           content="A proven solution for your custom solar labeling needs - from label design to printing, sorting and shipping. Whatever your solar cable label and equipment identification needs are, we have the resources to interpret, generate, print, sort and deliver them in many customizable packages. Our products are thoughtfully created to accelerate your teams' install, reduce on-site resources and decrease the overall cost of electrical installation."
