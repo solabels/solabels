@@ -46,7 +46,7 @@ const renderLayout = data => {
           body {
             overflow-x: hidden;
             background-image: url(${layoutProps.background_image.url});
-            background-position: right center;
+            background-position: right top;
             background-repeat: no-repeat;
             background-attachment: fixed;
             background-size: cover;
