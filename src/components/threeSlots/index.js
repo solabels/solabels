@@ -69,7 +69,14 @@ const ThreeSlots = ({ data }) => {
                 <Col sm='4' key={uid(item)}>
                   <Slot>
                     <span>
-                      {isShown && <CountUp end={item.number} duration={4} />}{" "}
+                      {isShown && (
+                        <CountUp
+                          end={item.number}
+                          decimal=','
+                          decimals={item.number % 1 != 0 ? 2 : 0}
+                          duration={4}
+                        />
+                      )}{" "}
                       {item.symbol_after && item.symbol_after[0].text}
                     </span>
                     <p>{item.title[0].text}</p>
