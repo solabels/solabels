@@ -72,7 +72,7 @@ const ThreeSlots = ({ data }) => {
                       {isShown && (
                         <CountUp
                           end={item.number}
-                          decimal=','
+                          decimal='.'
                           decimals={item.number % 1 != 0 ? 2 : 0}
                           duration={4}
                         />
