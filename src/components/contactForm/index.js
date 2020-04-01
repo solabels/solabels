@@ -112,6 +112,12 @@ const Button = styled.button`
     font-family: "Titillium Web", sans-serif;
     font-weight: 600;
   }
+  &:disabled{
+    color: gray;
+    span{
+      border: 0.3rem solid gray!important;
+    }
+  }
 `;
 
 const FormWrapper = styled.div`
@@ -143,10 +149,18 @@ function encode(data) {
 
 const ContactForm = () => {
   const [state, setState] = React.useState({});
+  const [isRecaptcha, setIsRecaptcha] = React.useState(false);
 
   const handleChange = e => {
     setState({ ...state, [e.target.name]: e.target.value });
-    console.log(e);
+  };
+
+  const checkCaptcha = e => {
+    if (e.target.value === '4') {
+      setIsRecaptcha(true);
+    } else {
+      setIsRecaptcha(false);
+    }
   };
 
   const handleSubmit = e => {
@@ -186,9 +200,9 @@ const ContactForm = () => {
                   name='contact'
                   method='post'
                   action='/thanks/'
-                  data-netlify='true'
-                  data-netlify-honeypot='bot-field'
-                  onSubmit={handleSubmit}
+                  data-netlify={isRecaptcha && `true`}
+                  data-netlify-honeypot={isRecaptcha && 'bot-field'}
+                  onSubmit={isRecaptcha && handleSubmit}
                 >
                   <FormWrapper>
                     <Label>Full Name: *</Label>{' '}
@@ -215,10 +229,12 @@ const ContactForm = () => {
                       component='textarea'
                     />
                   </FormWrapper>
-                  <div style={{ padding: '1rem 0' }} />
-                  <div data-netlify-recaptcha="true"></div>
-                  <div style={{ padding: '1rem 0' }} />
-                  <Button type='submit' disabled={isSubmitting}>
+                  <FormWrapper>
+                    <Label>How much is 2+2:</Label>{' '}
+                    <ErrorMessage name='captcha' component={ErrorMessageSpan} />
+                    <Field type='text' name='captcha' onChange={checkCaptcha} />
+                  </FormWrapper>
+                  <Button type='submit' disabled={!isRecaptcha}>
                     <span>SEND</span>
                   </Button>
                 </Form>
