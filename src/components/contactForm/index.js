@@ -1,10 +1,10 @@
-import React from "react";
-import { navigate } from "gatsby-link";
-import styled from "@emotion/styled";
-import * as Yup from "yup";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import { graphql, StaticQuery } from "gatsby";
-import { withPreview } from "gatsby-source-prismic-graphql";
+import React from 'react';
+import { navigate } from 'gatsby-link';
+import styled from '@emotion/styled';
+import * as Yup from 'yup';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { graphql, StaticQuery } from 'gatsby';
+import { withPreview } from 'gatsby-source-prismic-graphql';
 
 const ContactFormStyled = styled.div`
   display: flex;
@@ -26,7 +26,7 @@ const ContactFormStyled = styled.div`
     width: 100%;
     form {
       width: 50rem;
-      @media ${props => props.theme.media.md} {
+      @media ${ props => props.theme.media.md} {
         width: 100%;
       }
     }
@@ -51,12 +51,12 @@ const ContactFormStyled = styled.div`
     max-width: 100rem;
     .form-style {
       width: 60%;
-      @media ${props => props.theme.media.md} {
+      @media ${ props => props.theme.media.md} {
         width: 100%;
       }
     }
     .contact-style {
-      @media ${props => props.theme.media.md} {
+      @media ${ props => props.theme.media.md} {
         width: 0%;
         display: none;
       }
@@ -121,24 +121,24 @@ const FormWrapper = styled.div`
 
 const SignupSchema = Yup.object().shape({
   fullName: Yup.string()
-    .min(2, "Too Short!")
-    .max(50, "Too Long!")
-    .required("Required Name"),
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required Name'),
   email: Yup.string()
-    .email("Invalid email")
-    .required("Required Email"),
+    .email('Invalid email')
+    .required('Required Email'),
   phone: Yup.string()
-    .email("Invalid phone")
-    .required("Required Phone"),
+    .email('Invalid phone')
+    .required('Required Phone'),
   text: Yup.string()
-    .min(2, "Too Short!")
-    .required("Required Message")
+    .min(2, 'Too Short!')
+    .required('Required Message')
 });
 
 function encode(data) {
   return Object.keys(data)
-    .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
-    .join("&");
+    .map(key => encodeURIComponent(key) + '=' + encodeURIComponent(data[key]))
+    .join('&');
 }
 
 const ContactForm = () => {
@@ -152,27 +152,27 @@ const ContactForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     const form = e.target;
-    fetch("/", {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
-        "form-name": form.getAttribute("name"),
+        'form-name': form.getAttribute('name'),
         ...state
       })
     })
-      .then(() => navigate(form.getAttribute("action")))
+      .then(() => navigate(form.getAttribute('action')))
       .catch(error => alert(error));
   };
   return (
-    <div id='scroll_to_contact' style={{ paddingTop: "2.5rem" }}>
+    <div id='scroll_to_contact' style={{ paddingTop: '2.5rem' }}>
       <ContactFormStyled>
-        <div style={{ display: "flex", width: "100%" }}>
+        <div style={{ display: 'flex', width: '100%' }}>
           <div className='form-style'>
             <Title>
               <strong>Contact</strong> us:
             </Title>
             <Formik
-              initialValues={{ fullName: "", text: "" }}
+              initialValues={{ fullName: '', text: '' }}
               validationSchema={SignupSchema}
               onSubmit={(values, { setSubmitting }) => {
                 // setTimeout(() => {
@@ -191,22 +191,22 @@ const ContactForm = () => {
                   onSubmit={handleSubmit}
                 >
                   <FormWrapper>
-                    <Label>Full Name: *</Label>{" "}
+                    <Label>Full Name: *</Label>{' '}
                     <ErrorMessage name='name' component={ErrorMessageSpan} />
                     <Field type='text' name='name' onChange={handleChange} />
                   </FormWrapper>
                   <FormWrapper>
-                    <Label>Email: *</Label>{" "}
+                    <Label>Email: *</Label>{' '}
                     <ErrorMessage name='email' component={ErrorMessageSpan} />
                     <Field type='text' name='email' onChange={handleChange} />
                   </FormWrapper>
                   <FormWrapper>
-                    <Label>Phone:</Label>{" "}
+                    <Label>Phone:</Label>{' '}
                     <ErrorMessage name='phone' component={ErrorMessageSpan} />
                     <Field type='text' name='phone' onChange={handleChange} />
                   </FormWrapper>
                   <FormWrapper>
-                    <Label>Message: *</Label>{" "}
+                    <Label>Message: *</Label>{' '}
                     <ErrorMessage name='message' component={ErrorMessageSpan} />
                     <Field
                       type='textarea'
@@ -215,6 +215,9 @@ const ContactForm = () => {
                       component='textarea'
                     />
                   </FormWrapper>
+                  <div style={{ padding: '1rem 0' }} />
+                  <div data-netlify-recaptcha="true"></div>
+                  <div style={{ padding: '1rem 0' }} />
                   <Button type='submit' disabled={isSubmitting}>
                     <span>SEND</span>
                   </Button>
@@ -225,7 +228,7 @@ const ContactForm = () => {
           <ContactCMS />
         </div>
       </ContactFormStyled>
-    </div>
+    </div >
   );
 };
 
@@ -234,7 +237,7 @@ const Contact = ({ prismic }) => {
   return (
     <div className='contact-style'>
       <div className='contact-style--content'>
-        <h4 style={{ fontSize: "2.2rem" }}>SOlabels</h4>
+        <h4 style={{ fontSize: '2.2rem' }}>SOlabels</h4>
         <p>Phones: {contactInfo.phone[0].text}</p>
         <p>{contactInfo.address[0].text}</p>
         <p>{contactInfo.email[0].text}</p>

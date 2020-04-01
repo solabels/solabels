@@ -1,16 +1,15 @@
-import React from "react";
-import styled from "@emotion/styled";
-import { graphql, StaticQuery } from "gatsby";
-import { Container, Row, Col } from "reactstrap";
-import { withPreview } from "gatsby-source-prismic-graphql";
-import SolarSchema from "../components/solar-schema";
-import { FaToiletPaper, FaTools } from "react-icons/fa";
-import { RichText } from "prismic-reactjs";
-import { uid } from "react-uid";
+import React from 'react';
+import styled from '@emotion/styled';
+import { graphql, StaticQuery } from 'gatsby';
+import { Container, Row, Col } from 'reactstrap';
+import { withPreview } from 'gatsby-source-prismic-graphql';
+import SolarSchema from '../components/solar-schema';
+import { RichText } from 'prismic-reactjs';
+import { uid } from 'react-uid';
 
-import PageContainer from "../components/page-container";
-import Layout from "../components/layout";
-import SEO from "../components/seo";
+import PageContainer from '../components/page-container';
+import Layout from '../components/layout';
+import SEO from '../components/seo';
 
 const ServicesTitle = styled.h2`
   display: block;
@@ -30,15 +29,15 @@ const ServicesList = styled.ul`
 
 const RenderCMS = ({ prismic }) => {
   return (
-    <div style={{ margin: "12.5rem 0 12.5rem" }}>
-      <h1 style={{ margin: "5rem 0", textAlign: "center", fontWeight: "800" }}>
+    <div style={{ margin: '12.5rem 0 12.5rem' }}>
+      <h1 style={{ margin: '5rem 0', textAlign: 'center', fontWeight: '800' }}>
         Services
       </h1>
       <Container>
         <PageContainer>
-          <Row style={{ paddingBottom: "4rem" }}>
+          <Row style={{ paddingBottom: '4rem' }}>
             <Col>
-              <p style={{ fontSize: "1.6rem" }}>
+              <p style={{ fontSize: '1.6rem' }}>
                 {RichText.render(
                   prismic.allServicess.edges[0].node.service_text
                 )}
@@ -50,7 +49,7 @@ const RenderCMS = ({ prismic }) => {
               return (
                 <Col key={uid(serviceGroup)} sm='6'>
                   <ServicesTitle>
-                    <span style={{ fontSize: "3.5rem" }}>
+                    <span style={{ fontSize: '3.5rem' }}>
                       <img
                         src={serviceGroup.primary.heading_icon.url}
                         height='40'

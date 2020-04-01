@@ -1,20 +1,20 @@
-import React, { useState, useEffect } from "react";
-import styled from "@emotion/styled";
-import { Row, Col } from "reactstrap";
-import { graphql, StaticQuery } from "gatsby";
-import { RichText } from "prismic-reactjs";
-import { withPreview } from "gatsby-source-prismic-graphql";
-import { FaArrowRight } from "react-icons/fa";
+import React, { useState, useEffect } from 'react';
+import styled from '@emotion/styled';
+import { Row, Col } from 'reactstrap';
+import { graphql, StaticQuery } from 'gatsby';
+import { RichText } from 'prismic-reactjs';
+import { withPreview } from 'gatsby-source-prismic-graphql';
+import { FaArrowRight } from 'react-icons/fa';
 
-import SolarSetup from "./solar-setup-white.svg";
-import Label from "./label.svg";
+import SolarSetup from './solar-setup-white.svg';
+import Label from './label.svg';
 
 const ScorllContainer = styled.div`
   display: flex;
   position: relative;
   padding: 5rem;
   z-index: 4;
-  @media ${props => props.theme.media.lg} {
+  @media ${ props => props.theme.media.xl} {
     overflow-x: scroll;
   }
 `;
@@ -28,9 +28,14 @@ const SolarSetupImgContainer = styled.div`
   h2 {
     font-size: 3rem;
     text-align: center;
-    @media ${props => props.theme.media.lg} {
+    @media ${ props => props.theme.media.lg} {
       text-align: left;
     }
+  }
+  @media ${ props => props.theme.media.lg} {
+      h2{
+        text-align: left;
+      }
   }
 `;
 
@@ -64,7 +69,7 @@ const LabelTooltipWrapper = styled.div`
     text-align: left;
     transform: translateX(-35%);
     box-shadow: 0.1rem 1rem 0.5rem -0.4rem rgba(0, 0, 0, 0.2);
-    @media ${props => props.theme.media.lg} {
+    @media ${ props => props.theme.media.lg} {
       position: fixed;
       width: 40rem;
       top: 15%;
@@ -103,7 +108,7 @@ const MobileArrow = styled.div`
   span.left {
     transform: rotate(180deg);
   }
-  @media ${props => props.theme.media.lg} {
+  @media ${ props => props.theme.media.lg} {
     display: inline-block;
   }
 `;
@@ -112,7 +117,7 @@ const LabelTooltip = ({ LabelImage, LabelText, flipped, ...props }) => {
   return (
     <LabelTooltipWrapper {...props}>
       <img
-        style={flipped && { transform: "scaleX(-1)" }}
+        style={flipped && { transform: 'scaleX(-1)' }}
         height='40'
         src={Label}
       />
@@ -129,20 +134,20 @@ const LabelTooltip = ({ LabelImage, LabelText, flipped, ...props }) => {
 };
 
 const SolarSchemaCMS = ({ prismic }) => {
-  const [arrowClass, setArrowClass] = useState("");
+  const [arrowClass, setArrowClass] = useState('');
 
   useEffect(() => {
-    const schemaContainer = document.querySelector(".solar-schema-container");
-    schemaContainer.addEventListener("scroll", onScrollDiv);
-    document.addEventListener("scroll", onScroll);
+    const schemaContainer = document.querySelector('.solar-schema-container');
+    schemaContainer.addEventListener('scroll', onScrollDiv);
+    document.addEventListener('scroll', onScroll);
     return () => {
-      schemaContainer.removeEventListener("scroll", onScrollDiv);
-      document.removeEventListener("scroll", onScroll);
+      schemaContainer.removeEventListener('scroll', onScrollDiv);
+      document.removeEventListener('scroll', onScroll);
     };
   });
 
   const onScroll = e => {
-    const labelToolTip = document.querySelectorAll(".label-tooltip .tooltip");
+    const labelToolTip = document.querySelectorAll('.label-tooltip .tooltip');
     // for (let i = 0; i < labelToolTip.length; i++) {
     //   labelToolTip[i].style.display = "none";
     // }
@@ -150,9 +155,9 @@ const SolarSchemaCMS = ({ prismic }) => {
 
   const onScrollDiv = e => {
     if (e.target.scrollLeft > e.target.offsetWidth) {
-      setArrowClass("left");
+      setArrowClass('left');
     } else if (e.target.scrollLeft < 50) {
-      setArrowClass("right");
+      setArrowClass('right');
     }
   };
 
@@ -163,7 +168,7 @@ const SolarSchemaCMS = ({ prismic }) => {
         <SolarSetupImg src={SolarSetup} />
         <LabelTooltip
           className='label-tooltip'
-          style={{ bottom: "17.5%", left: "3.2%" }}
+          style={{ bottom: '17.5%', left: '3.2%' }}
           LabelImage={
             labels[0] && labels[0].primary.image && labels[0].primary.image.url
           }
@@ -171,7 +176,7 @@ const SolarSchemaCMS = ({ prismic }) => {
         />
         <LabelTooltip
           className='label-tooltip'
-          style={{ bottom: "0%", left: "14%" }}
+          style={{ bottom: '0%', left: '14%' }}
           LabelImage={
             labels[1] && labels[1].primary.image && labels[1].primary.image.url
           }
@@ -180,7 +185,7 @@ const SolarSchemaCMS = ({ prismic }) => {
         />
         <LabelTooltip
           className='label-tooltip'
-          style={{ bottom: "12.5%", left: "27.3%" }}
+          style={{ bottom: '12.5%', left: '27.3%' }}
           LabelImage={
             labels[2] && labels[2].primary.image && labels[2].primary.image.url
           }
@@ -188,7 +193,7 @@ const SolarSchemaCMS = ({ prismic }) => {
         />
         <LabelTooltip
           className='label-tooltip'
-          style={{ bottom: "0%", left: "30%" }}
+          style={{ bottom: '0%', left: '30%' }}
           LabelImage={
             labels[3] && labels[3].primary.image && labels[3].primary.image.url
           }
@@ -197,7 +202,7 @@ const SolarSchemaCMS = ({ prismic }) => {
         />
         <LabelTooltip
           className='label-tooltip'
-          style={{ bottom: "18%", left: "44.75%" }}
+          style={{ bottom: '18%', left: '44.75%' }}
           LabelImage={
             labels[4] && labels[4].primary.image && labels[4].primary.image.url
           }
@@ -205,7 +210,7 @@ const SolarSchemaCMS = ({ prismic }) => {
         />
         <LabelTooltip
           className='label-tooltip'
-          style={{ bottom: "0%", left: "45%" }}
+          style={{ bottom: '0%', left: '45%' }}
           LabelImage={
             labels[5] && labels[5].primary.image && labels[5].primary.image.url
           }
@@ -214,7 +219,7 @@ const SolarSchemaCMS = ({ prismic }) => {
         />
         <LabelTooltip
           className='label-tooltip'
-          style={{ bottom: "18%", left: "58%" }}
+          style={{ bottom: '18%', left: '58%' }}
           LabelImage={
             labels[6] && labels[6].primary.image && labels[6].primary.image.url
           }
@@ -222,7 +227,7 @@ const SolarSchemaCMS = ({ prismic }) => {
         />
         <LabelTooltip
           className='label-tooltip'
-          style={{ bottom: "0", left: "57.5%" }}
+          style={{ bottom: '0', left: '57.5%' }}
           LabelImage={
             labels[7] && labels[7].primary.image && labels[7].primary.image.url
           }

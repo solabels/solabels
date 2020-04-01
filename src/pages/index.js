@@ -1,14 +1,14 @@
-import React from "react";
-import { graphql, StaticQuery } from "gatsby";
-import { Row, Col } from "reactstrap";
-import { uid } from "react-uid";
-import { withPreview } from "gatsby-source-prismic-graphql";
-import "bootstrap/dist/css/bootstrap-reboot.min.css";
-import "bootstrap/dist/css/bootstrap-grid.min.css";
+import React from 'react';
+import { graphql, StaticQuery } from 'gatsby';
+import { Row, Col } from 'reactstrap';
+import { uid } from 'react-uid';
+import { withPreview } from 'gatsby-source-prismic-graphql';
+import 'bootstrap/dist/css/bootstrap-reboot.min.css';
+import 'bootstrap/dist/css/bootstrap-grid.min.css';
 
-import Layout from "../components/layout";
-import SEO from "../components/seo";
-import CmsRow from "../components/cmsRow";
+import Layout from '../components/layout';
+import SEO from '../components/seo';
+import CmsRow from '../components/cmsRow';
 
 const RenderCMS = ({ prismic }) => {
   return (
