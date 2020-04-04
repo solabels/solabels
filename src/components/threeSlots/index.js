@@ -53,6 +53,13 @@ const ThreeSlots = ({ data }) => {
 
   useEffect(() => {
     if (typeof document !== 'undefined') {
+      const wrappedElement = document.querySelector('.three-slots');
+      if (isBottom(wrappedElement)) {
+        setIsShown(true);
+        document.removeEventListener('scroll', trackScrolling);
+      }
+    }
+    if (typeof document !== 'undefined') {
       document.addEventListener('scroll', trackScrolling);
       return () => {
         document.removeEventListener('scroll', trackScrolling);
