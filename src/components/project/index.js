@@ -49,7 +49,7 @@ const CenterImg = styled.div`
   justify-content: center;
 `;
 
-const Project = ({ img, name, location, capacity, labels, text }) => {
+const Project = ({ img, name, year, location, capacity, labels, text }) => {
   return (
     <ErrorBoundary>
       <ProjectWrapper>
@@ -63,6 +63,7 @@ const Project = ({ img, name, location, capacity, labels, text }) => {
             <div>
               <strong>{name}</strong>
             </div>
+            <div>{year}</div>
             <div className='underline'>{location}</div>
             <div>{capacity}</div>
             <div>{labels}</div>

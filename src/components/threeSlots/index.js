@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from "react";
-import CountUp from "react-countup";
-import styled from "@emotion/styled";
-import { Row, Col } from "reactstrap";
-import Fade from "react-reveal/Fade";
-import { uid } from "react-uid";
+import React, { useState, useEffect } from 'react';
+import CountUp from 'react-countup';
+import styled from '@emotion/styled';
+import { Row, Col } from 'reactstrap';
+import Fade from 'react-reveal/Fade';
+import { uid } from 'react-uid';
 
-import Skew from "../skew";
+import Skew from '../skew';
 
 const ThreeSlotsWrapper = styled.div`
   padding-top: 15rem;
   padding-bottom: 15rem;
-  @media ${props => props.theme.media.md} {
+  @media ${ props => props.theme.media.md} {
     padding-top: 0rem;
   }
 `;
@@ -42,20 +42,20 @@ const ThreeSlots = ({ data }) => {
   }
 
   function trackScrolling() {
-    if (typeof document !== "undefined") {
-      const wrappedElement = document.querySelector(".three-slots");
+    if (typeof document !== 'undefined') {
+      const wrappedElement = document.querySelector('.three-slots');
       if (isBottom(wrappedElement)) {
         setIsShown(true);
-        document.removeEventListener("scroll", trackScrolling);
+        document.removeEventListener('scroll', trackScrolling);
       }
     }
   }
 
   useEffect(() => {
-    if (typeof document !== "undefined") {
-      document.addEventListener("scroll", trackScrolling);
+    if (typeof document !== 'undefined') {
+      document.addEventListener('scroll', trackScrolling);
       return () => {
-        document.removeEventListener("scroll", trackScrolling);
+        document.removeEventListener('scroll', trackScrolling);
       };
     }
   });
@@ -76,7 +76,7 @@ const ThreeSlots = ({ data }) => {
                           decimals={item.number % 1 != 0 ? 2 : 0}
                           duration={4}
                         />
-                      )}{" "}
+                      )}{' '}
                       {item.symbol_after && item.symbol_after[0].text}
                     </span>
                     <p>{item.title[0].text}</p>

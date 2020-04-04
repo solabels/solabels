@@ -19,6 +19,7 @@ const RenderCMS = ({ prismic }) => {
             key={uid(project)}
             img={project.primary.image && project.primary.image.url}
             name={project.primary.title[0].text}
+            year={project.primary.year[0].text}
             location={project.primary.location[0].text}
             capacity={project.primary.capacity[0].text}
             labels={project.primary.labels[0].text}
@@ -48,6 +49,7 @@ const query = graphql`
                 primary {
                   image
                   title
+                  year
                   location
                   capacity
                   labels
